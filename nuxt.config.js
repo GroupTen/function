@@ -1,6 +1,6 @@
 const pkg = require('./package')
 const axios = require('axios')
-const blokToken = ' pQ1qRdl9S8X1bwzXDIAg1Qtt'
+const blokToken = 'pQ1qRdl9S8X1bwzXDIAg1Qtt'
 
 const resourceTypes = 'page'
 const mainUrl = 'https://www.wellcertified.com'
