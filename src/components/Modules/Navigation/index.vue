@@ -1,0 +1,89 @@
+<template>
+  <div :class="this.openNav === true ? BEM_B + ' mobile-open' : BEM_B + ' mobile-closed'" style="flex-direction: column;">
+    <div class="container">
+      <div class="row">
+        <a :class="BEM_E('to-top') + ' Btn Btn--outline-sm tooltip-balloon'"
+          data-balloon="Back to top" data-balloon-pos="bottom"
+          @click="scrollToTop()"
+          v-if="blok.variation === 'subnav'" >↑</a>
+        <a 
+          v-if="blok.homeImage" 
+          :href="homeLink"
+          :class="BEM_E('logo-link')">
+          <img
+            :class="BEM_E('logo')"
+            :src="blok.homeImage">
+          <img
+            :class="BEM_E('logo')"
+            :src="blok.homeImageLight">
+        </a>
+        <JoinedNavItems
+          v-if="blok.variation === 'mainnav'" 
+          :items="blok.navItems" />
+        <b-nav v-else-if="blok.navItems">
+          <NavItem
+            v-for="(item, index) in blok.navItems"
+            v-bind:key="index"
+            :blok="item"
+            :lang="lang" />
+        </b-nav>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import BaseComponent from '~/src/components/Templates/BaseComponent'
+import JoinedNavItems from './JoinedNavItems'
+import NavItem from './NavItem'
+
+export default {
+  extends: BaseComponent,
+  components: { JoinedNavItems, NavItem },
+  props: {
+    name: {
+      type: String,
+      default: 'Navigation'
+    },
+    blok: Object
+  },
+  data () {
+    return {
+      openNav: false
+    }
+  },
+  methods: {
+    toggleNav () {
+      this.openNav = !this.openNav
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
+  },
+  computed: {
+    lang () {
+      return this.$route.fullPath.split('/')[1]
+    },
+    homeLink () {
+      let base = process.env.NODE_ENV == 'production' ? this.MAIN_URL : this.BASE_URL
+      let lang = this.$store.state.language !== 'en' ? '/' + this.$store.state.language : ''
+
+      let fullLink = base
+
+      if(this.blok && this.blok.variation == 'subnav'){
+        let url = this.blok.homeLink.cached_url
+        fullLink += url.startsWith(lang) ? url : lang + url
+        return fullLink
+      } else {
+        return base + lang + '/'
+      }
+
+      return base + lang
+    }
+  }
+}
+</script>

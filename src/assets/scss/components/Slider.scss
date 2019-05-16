@@ -1,0 +1,190 @@
+.Slider {
+  @extend .module-offset;
+  position: relative;
+
+  & > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__slides {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__slide {
+    height: 100%;
+  }
+
+  &__title {
+    .TitleBlock:not(:empty) {
+      padding-bottom: 0;
+    }
+  }
+
+  &__link {
+    @include flex(row, center);
+    margin-top: $module-offset / 2;
+  }
+
+  &__slide-link {
+    @include flex(row);
+  }
+}
+
+.slidr {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &-list {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    transition: all 0.9s ease-in-out;
+  }
+  
+  &.is-vertical &-track  {
+    flex-direction: column;
+    height: 200px
+  }
+  &.is-rtl  {
+    direction: rtl;
+  }
+  
+  &-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+  &-slide {
+    flex-shrink: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.is-current {
+      opacity: 1;
+      transition: opacity 0.3s ease-in 0.3s;
+    }
+
+    &.is-next,
+    &.is-prev {
+      opacity: 0;
+      transition: opacity 0.3s ease-out 0.3s;
+    }
+  }
+
+  &-progress {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 4px;
+    background-color: #efefef;
+  }
+  &-progress-inner {height: 100%;
+    background-color: #4285f4;
+    transition: .3s;
+  }
+  &-pagination {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    padding: 5px 10px;
+  }
+
+  &-indicators {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-indicator.is-active,
+  &-indicator:hover {
+    background-color: $blue;
+  }
+  &-indicator {
+    margin: 0 2px;
+    width: 12px;
+    height: 4px;
+    border-radius: 4px;
+    border: none;
+    padding: 0;
+    background-color: $blue10;
+    cursor: pointer
+  }
+  &-pagination.is-vertical {
+    bottom: auto;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+  }
+  &-pagination.is-vertical &-indicators {
+    flex-direction: column
+  }
+  &-pagination.is-vertical &-indicator {
+    width: 6px
+  }
+  &-next,
+  &-prev {
+    position: absolute;
+    top: 50%;
+    padding: 1em;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer
+  }
+  &-next.is-disabled,
+  &-prev.is-disabled {
+    opacity: .3;
+    cursor: not-allowed
+  }
+  &-next {
+    right: 0
+  }
+  &-prev {
+    left: 0
+  }
+  &-navigation.is-vertical &-next {
+    top: auto;
+    bottom: 0;
+    transform: initial
+  }
+  &-navigation.is-vertical &-prev {
+    top: 0;
+    bottom: auto;
+    right: 0;
+    left: auto;
+    transform: initial
+  }
+  &-navigation.is-rtl &-prev {
+    left: auto;
+    right: 0
+  }
+  &-navigation.is-rtl &-next {
+    right: auto;
+    left: 0
+  }
+}

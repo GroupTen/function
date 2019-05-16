@@ -1,0 +1,341 @@
+$listItemIconList: check, globe;
+
+.RichText {
+  @include make-col(12);
+
+  $RichTextBorderOffset: 60px;
+
+  position: relative;
+  padding-top: $module-offset;
+  padding-bottom: $module-offset;
+  @extend .mobile-side-pad;
+
+  & > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .TitleBlock {
+    @include media(">=tablet") {
+      &:not(:empty) {
+        padding-bottom: $module-offset / 4;
+      }
+    }
+  }
+
+  .TitleBlock__image {
+    margin-bottom: $module-offset / 4;
+  }
+
+  .TitleBlock__title {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+
+
+  .TitleBlock__caption {
+    width: 100%;
+  }
+
+  &__contents {
+    @include flex(column);
+    width: 100%;
+  }
+
+  &__content {
+    @include flex(column, center, flex-start);
+    z-index: 1;
+    height: 100%;
+    
+    & > * {
+      width: 100%;
+    }
+
+    & > *:not(.TitleBlock) {
+
+    }
+  }
+
+  &__link {
+    @include flex(column, flex-start, stretch);
+
+    @include media(">=tablet") {
+      @include flex(row, flex-start, baseline);   
+    }
+
+    .Btn + .Btn {
+      margin-top: 10px;
+      margin-left: 0;
+      @include media(">=tablet") {
+        margin-top: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+
+
+  &--eight-column {
+    @include make-col(12);
+    @extend .mobile-side-pad;
+
+    .RichText__contents {
+      @include media(">=tablet") {
+      @include make-col(8);
+      @include make-col-offset(2);
+    }
+    }
+  }
+
+  &--ten-column {
+    @include make-col(12);
+    @extend .mobile-side-pad;
+
+    .RichText__contents {
+      @include media(">=tablet") {
+      @include make-col(10);
+      @include make-col-offset(1);
+    }
+    }
+  }
+
+  &--full-text {
+  @extend .mobile-side-pad;
+  }
+
+  &--image-left,
+  &--image-right {
+    @extend .mobile-side-pad;
+
+    .RichText__contents {
+      @include media(">=tablet") {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .RichText__image {
+      @include media("<tablet") {
+        margin-bottom: 24px;
+      }
+
+      video {
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+
+    /*
+    a {
+      display: block;
+    }
+    */
+
+    &.bordered {
+      .RichText__content {
+        position: relative;
+
+        &:after {
+          z-index: -1;
+          width: calc(100% + #{$RichTextBorderOffset * 2});
+          height: calc(100% + #{$RichTextBorderOffset});
+          top: -$RichTextBorderOffset / 2;
+          left: -$RichTextBorderOffset;
+          border: 1px solid $grey-dark;
+
+          @include media(">=desktop") {
+            content: '';
+            position: absolute;
+          }
+        }
+      }
+
+      @each $key, $value in $colorMap {
+        &.bordered-#{$key} .RichText__content:after {
+          border-color: $value;
+        }
+      }
+    }
+    &.boxed {
+      .RichText__content {
+        position: relative;
+        margin-left: 0;
+        padding-right: 0;
+        @include media(">=tablet") {
+          @include make-col(4);
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          width: calc(100% + #{$RichTextBorderOffset});
+          height: calc(100% + #{$RichTextBorderOffset});
+          top: -$RichTextBorderOffset / 2;
+          left: -$RichTextBorderOffset / 2;
+        }
+      }
+
+      @each $key, $value in $colorMap {
+        &.boxed-#{$key} .RichText__content:after {
+          background: $value;
+        }
+      }
+    }
+  }
+
+  &--image-left {
+    .RichText__content {
+      margin: 0 auto; 
+
+      @include media(">=tablet") {
+        @include make-col(7);
+        @include make-col-offset(0);
+        padding-left: $RichTextBorderOffset;
+      }
+
+      @include media(">=desktop") {
+        @include make-col(5);
+      }
+    }
+
+    .RichText__image {
+
+      @include media("<tablet") {
+        width: 100%;
+        margin-left: auto; 
+        margin-right: auto;  
+        margin-top: 20px;
+      }         
+    
+
+      @include media(">=tablet") {
+        @include make-col(5);      
+      }
+      @include media(">=desktop") {
+        @include make-col-offset(1);
+        margin-left: calc(8.33333% - #{$RichTextBorderOffset / 2});
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &--image-left-bleed {
+    @extend .RichText--image-left;
+
+    .container {
+      max-width: none;
+    }
+
+    .RichText__contents {
+      justify-content: space-between;
+    }
+
+    .RichText__content {
+      @include media(">=tablet") {
+        margin-right: 100px;
+      }
+    }
+
+    .RichText__image {
+      @include make-col-offset(0);
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  &--image-right {
+    .RichText__contents {
+      @include media(">=tablet") {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+      }
+    }
+
+    .RichText__content {
+      @include media(">=tablet") {
+        @include make-col(7);
+        @include make-col-offset(1);
+        padding-right: $RichTextBorderOffset;
+        margin-right: 0;
+      }
+
+      @include media(">=desktop") {
+        @include make-col(5);
+        @include make-col-offset(2);
+        margin-left: calc(8.3333% + #{$RichTextBorderOffset / 2});
+      }
+    }
+
+    .RichText__image {
+
+      @include media("<tablet") {
+        width: 100%;
+        margin-left: auto; 
+        margin-right: auto;  
+        margin-top: 20px;
+      } 
+      
+      @include media(">=tablet") {
+        @include make-col(5);      
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &--image-right-bleed {
+    @extend .RichText--image-right;
+
+    .container {
+      max-width: none;
+    }
+
+    .RichText__contents {
+      justify-content: space-between;
+    }
+
+    .RichText__content {
+      @include media(">=tablet") {
+        margin-left: 100px;
+      }
+    }
+
+    .RichText__image {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .Slider & {
+    @include media("<tablet") {
+      .RichText__content {
+        padding: 0 20px;
+      }
+      .RichText__image {
+        text-align: center;
+      }
+
+      .RichText__image img {
+        max-width: 50%;
+      }
+      .TitleBlock__image {
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+    }
+  }
+}

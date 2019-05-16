@@ -1,0 +1,141 @@
+%shownDropdown {
+  $_dropdown-bg: $blue5;
+  $_dropdown-border: 1px solid rgba($blue80, 0.125);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  background: $_dropdown-bg;
+  border: $_dropdown-border;
+  box-shadow: 0 1px 10px rgba($blue50, 0.125);
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -5px;
+    left: 20px;
+    background: $_dropdown-bg;
+    transform: rotate(45deg);
+    transform-origin: center;
+    border-top: $_dropdown-border;
+    border-left: $_dropdown-border;
+  }
+
+  .dropdown-item {
+    color: $blue80;
+    &.subnav-head {
+      flex: 1;
+      flex-basis: 100%;
+      width: 100%;
+      margin: 0.5rem 0.75rem 0;
+      padding: 0.5rem;
+
+      &:first-child {
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      &:not(:first-child) {
+        border-top: 1px solid rgba($blue80, 0.25);
+      }
+
+      .subnav-head__wrapper {
+        display: block;
+      }
+
+      .subnav-head__text {
+        display: none;
+      }
+
+      img {
+        max-height: 12.75px;
+      }
+    }
+
+    &:hover {
+      color: $blue50;
+      background: none;
+      text-decoration: underline;
+    }
+
+    &.active {
+      color: $blue50;
+      background: none;
+
+      &:hover {
+        cursor: default;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.Navigation {
+  .nav-item {
+    &.flex {
+      flex: 1;
+
+      a.Btn {
+        display: inline-block;
+        font-weight: $weight-light;
+      }
+    }
+
+    &--btn a {
+      @extend .btn
+    }
+
+    &--btn-primary a {
+      @extend .btn-primary
+    }
+
+    & > .nuxt-link,
+    &:not(.nav-item--btn) > .nav-link {
+      &:hover {
+        color: $grey-dark;
+      }
+    }
+
+    &.b-nav-dropdown > a {
+      &:not(:hover):after {
+        opacity: 0;
+      }
+
+      & + .dropdown-menu.show {
+        @extend %shownDropdown;
+      }
+    }
+
+
+    &.b-nav-dropdown.show > a:after {
+      opacity: 1;
+    }
+
+    &.nav-two-col {
+      .dropdown-menu.show {
+        @extend %shownDropdown;
+        width: 300px;
+
+        .dropdown-item {
+          flex: 0 0 50%;
+        }
+      }
+    }
+  }
+}
+
+.nav-light .Navigation:not(.mobile-open):not(.Navigation--subnav) .nav-item > .nav-link {
+  color: white!important;
+}
+
+.NavItem {
+  &.language > .nav-link {
+    display: flex!important;
+    align-items: center;
+
+    .simple-svg-wrapper {
+      margin-right: 5px;
+    }
+  }
+}

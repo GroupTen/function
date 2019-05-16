@@ -1,0 +1,478 @@
+$TableCellPad: 1vw;
+$TableHeaderRadius: 4px;
+$TableAccent: $blue;
+$TableOffsetScale: 20px;
+$_vert-border: 2px solid #DAE4E8;
+$_horiz-border: 1px solid #C2D3D9;
+/* $_cell-accent: #f3f3f3; */
+$_cell-accent: #fff;
+$listItemIconList: check, globe;
+
+
+.TableList {
+  @extend .module-offset;
+  @extend .mobile-side-pad;
+
+  &__select {
+    width: 100%;
+
+    .custom-select,
+    .v-select {
+      width: 400px;
+    }
+
+    .vs__clear {
+      display: none!important;
+    }
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &--center {
+
+    .TableList__select {
+      @include flex(row, center);
+    }
+  }
+
+  & + .TableList,
+  & + .Table {
+    padding-top: 0;
+    @include media("<=tablet") {
+      margin-top: 40px;
+    }
+  }
+
+  .Table {
+    margin : 0;
+  }
+}
+
+.Table {
+  margin: $module-offset 0;
+
+  & + .TableList,
+  & + .Table {
+    @include media("<=tablet") {
+      margin-top: 40px;
+    }
+  }
+  &__wrapper {
+    @include media("<tablet") {
+      padding: $module-offset;
+      overflow:scroll;
+    }
+
+    @include media(">=tablet") {
+      width: 100%;      
+    }
+  }
+
+  &__link {
+    @include flex(row, center);
+    width: 100%;
+    margin-top: $module-offset / 4;
+  }
+
+  &--featured {
+    .Table__wrapper {
+
+      @include media("<tablet") {
+        @include make-col(12);
+        @include make-col-offset(0);
+      }
+      
+
+      @include media(">=tablet") {
+        @include make-col(12);
+        @include make-col-offset(0);
+      }
+
+      @include media(">desktop") {
+        @include make-col(8);
+        @include make-col-offset(2);
+      }
+    }
+
+    .Table__table {
+      @include media("<tablet") {
+        width: 640px;
+      }
+    }
+
+    .TableCell {
+      padding: $TableCellPad;
+    }
+  }
+
+  &--condensed {
+    .Table__table {
+      @include media("<tablet") {
+        width: 1024px;
+      }
+    }
+
+    .TableRow__cell {
+      border-color: $grey-light;
+    }
+    .TableRow--body .TableRow__cell {
+      border: none;
+      border-bottom: 1px solid $grey-light;
+    }
+    .TableRow--header .TableRow__cell {
+      border-left: none;
+      border-right: none;
+
+      .border-top-color .border-top-color {
+          border-top-color:transparent;
+        }
+
+
+      .TableCell__cell-header:before {
+        display: none;
+      }
+    }
+
+    .TableRow--footer .TableRow__cell {
+      border: none;
+    }
+
+    .TableCell__cell-header h2 {
+      margin-bottom: 0;
+    }
+  }
+
+  @for $totalCols from 1 through 10 {
+    &.total-columns-#{$totalCols} {
+      .TableRow__cell {
+        flex: 0 0 #{100% / $totalCols};
+        max-width: #{100% / $totalCols};
+      }
+
+      // Allow Columns to grow larger
+      // Applied as a utility class to the Row as:
+      // .subcol-{columnIndex}-{# of columns to span}
+      @for $colIndex from 1 through $totalCols {
+        @for $colFlow from 1 through $totalCols {
+          .TableRow.subcol-#{$colIndex}-#{$colFlow} {
+            .TableRow__cell:nth-child(#{$colIndex}) {
+              flex: 0 0 #{(100% / $totalCols) * $colFlow};
+              max-width: #{(100% / $totalCols) * $colFlow};
+            }
+          }
+        }
+      }
+
+      &.cols-offset {
+        .TableRow__cell {
+          &:not(:last-child) {
+            margin-right: #{10% / $totalCols / 2};
+          }
+        }
+      }
+    }
+
+    &.col-#{$totalCols}-feature {
+      .Table__table {
+        margin-top: $TableOffsetScale;
+      }
+      .TableRow__cell:nth-child(#{$totalCols}) .TableCellHeader,
+      .TableRow__cell:nth-child(#{$totalCols}) .TableCell {
+        background: $_cell-accent;
+
+        &.extra-border {
+        border: 3px solid #0C7B97;
+        }
+
+
+        .TableCell__cell-header h3:after {
+          background: $TableAccent;
+        }
+      }
+
+      .TableRow--header {
+        .TableRow__cell {
+          border-top-right-radius: $TableHeaderRadius;
+          border-top-left-radius: $TableHeaderRadius;
+
+          &:nth-child(#{$totalCols}) {
+            border-top-color: transparent;
+          }
+        }
+      }
+
+      .TableRow__cell:nth-child(#{$totalCols}) .TableCell__cell-header {
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: calc(100% + #{2 * $TableCellPad} + 2px);
+          height: 30px;
+          top: 0;
+          left: 0;
+          margin-top: calc(#{$TableCellPad * -1} - 1px);
+          margin-left: calc(#{$TableCellPad * -1} - 1px);
+          background: $blue;
+
+          @include media(">=tablet") {
+            border-top-left-radius: $TableHeaderRadius;
+            border-top-right-radius: $TableHeaderRadius;
+          }
+        }
+      }
+
+      &.cols-offset {
+        .TableCell__cell-header {
+          padding-top: calc(#{$module-offset} + 20px);
+
+            @include media(">=tablet") {
+            padding-top: calc(#{$module-offset} - 20px);
+          }
+        }
+
+        .TableRow__cell:nth-child(#{$totalCols}) {
+          border: none;
+          @include media(">=tablet") {
+            margin-top: -$TableOffsetScale;
+            margin-bottom: -$TableOffsetScale;
+          }
+
+          .TableCell__cell-header {
+            padding-top: calc(#{$module-offset} + 20px);
+
+            @include media(">=tablet") {
+            padding-top: calc(#{$module-offset} - 30px);
+          }
+        }
+
+          .TableCell__cell-header:before {
+            width: calc(100% + #{2 * $TableCellPad});
+            margin-left: -$TableCellPad;
+          }
+        }
+      }
+    }
+
+    &.col-#{$totalCols}-no-border {
+      .Table__table-row:first-child .TableRow__cell:nth-child(#{$totalCols}) {
+        border-top-color: transparent;
+      }
+      .TableRow__cell:nth-child(#{$totalCols}) {
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+  }
+
+  &.cols-offset {
+    .Table__wrapper {
+      margin-top: $TableOffsetScale;
+      margin-bottom: $TableOffsetScale;
+    }
+
+    .TableRow__cell {
+      border-radius: $TableHeaderRadius;
+      border: 1px solid $TableAccent;
+    }
+
+    .TableCell {
+      border-radius: $TableHeaderRadius;
+    }
+  }
+}
+
+
+.TableRow {
+  @include flex(row);
+
+  @for $cell from 1 through 10 {
+    &.row-accent-#{$cell} {
+      .TableRow__cell:nth-child(#{$cell}) {
+        background: $_cell-accent;
+      }
+    }
+  }
+
+  &__cell {
+    border-top: $_horiz-border;
+    border-right: $_vert-border;
+    border-bottom: $_horiz-border;
+    border-left: $_vert-border;
+
+    &:not(:last-child) {
+      border-right: none;
+    }
+
+    .Table--featured .Table__table-row:not(:last-child) & {
+      border-bottom: none;
+    }
+  }
+
+  &.no-border {
+    .TableRow__cell {
+      border: none;
+
+      .no-border {
+        border-top: none;
+      }
+    }
+  }
+}
+
+.TableCell {
+  width: 100%;
+  height: 100%;
+  padding: $TableCellPad;
+
+  &.cell-accent {
+    background: $_cell-accent;
+
+    @each $key, $value in $colorMap {
+      &-#{$key} {
+        background-color: $value!important;
+      }
+    }
+  }
+
+  &.align-left {
+    .TableCell__cell-text {
+      justify-content: flex-start;
+    }
+  }
+
+  &__cell {
+    height: 100%;
+  }
+
+  &__cell-header {
+    @include flex(column, center, center);
+
+    img {
+      @include media("<tablet") {
+        max-width: 180px;
+      }
+    }
+
+    .Table--featured & {
+      padding: 40px 0 20px;
+
+      h3 {
+        position: relative;
+        margin-bottom: 40px;
+        font-size: 25px;
+        font-weight: $weight-black;
+        color: rgba($grey-dark, 0.67);
+
+        span {
+          font-size: 15px;
+          font-weight: $weight-light;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 80%;
+          height: 5px;
+          bottom: -1.5vw;
+          left: 10%;
+          background: rgba($grey-dark, 0.67);
+        }
+      }
+    }
+
+    h2, h3, p {
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 0.5em;
+    }
+
+    h3 {
+      position: relative;
+      margin-bottom: 6.25vw;
+      font-size: 50px;
+      font-weight: $weight-bold;
+
+      span {
+        font-size: 15px;
+        font-weight: $weight-light;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 80%;
+        height: 5px;
+        bottom: -1.5vw;
+        left: 10%;
+        background: rgba($grey-dark, 0.67);
+      }
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.25;
+    }
+  }
+
+  &__cell-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    img {
+      max-width: 100%;
+      max-height: 25px;
+    }
+  }
+
+  &--spacer {
+  }
+
+  h5 {
+    margin-bottom: 0;
+    font-weight: $weight-bold;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.extra-border { border: 3px solid #0C7B97; }
+
+.no-border {border-top: none;}
+
+
+
+
+.total-columns-1 {
+    .Table__wrapper {
+      @include make-col(10);
+        @include make-col-offset(1);
+
+      @include media(">=tablet") {
+        @include make-col(4);
+        @include make-col-offset(4);
+      }
+    }
+
+    .Table__table {
+      @include media("<tablet") {
+        width: 100%;
+      }
+    }
+}
+
+
+.TableRow .TableRow--header .border-top-color {
+  .TableRow__cell {
+    border: red;
+  }
+}

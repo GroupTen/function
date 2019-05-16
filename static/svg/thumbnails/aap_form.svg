@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="220px" viewBox="0 0 240 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6 Copy 37</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="20.5316892%" y1="22.343957%" x2="56.0127087%" y2="62.7001556%" id="linearGradient-1">
+            <stop stop-color="#51D6FF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-2" transform="translate(-78.000000, -33.000000)">
+            <g id="Group-52-Copy" transform="translate(107.000000, 46.000000)">
+                <g transform="translate(29.000000, 6.000000)" id="Group-52">
+                    <g>
+                        <polygon id="Path-3" fill="url(#linearGradient-1)" style="mix-blend-mode: multiply;" opacity="0.165625" filter="url(#filter-2)" points="121.170514 0 277 157.2484 132.886954 254 1 164.549369"></polygon>
+                        <g id="Group-49" transform="translate(0.000000, 1.000000)">
+                            <g id="Group-44" fill-rule="nonzero">
+                                <g id="Group-62" transform="translate(23.000000, 4.000000)" fill="#FFFFFF">
+                                    <rect id="Rectangle-7" x="0" y="0" width="101" height="159"></rect>
+                                    <rect id="Rectangle-7-Copy-2" x="2" y="4" width="101" height="159"></rect>
+                                    <rect id="Rectangle-7-Copy-3" x="3" y="6" width="101" height="159"></rect>
+                                </g>
+                                <rect id="Rectangle-31" fill="#51D6FF" x="0" y="0" width="122" height="170"></rect>
+                            </g>
+                            <g id="Group-44-Copy" transform="translate(15.000000, 21.000000)" fill="#51D6FF" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="1.5">
+                                <g id="Group-48">
+                                    <rect id="Rectangle-31" x="0.75" y="0.75" width="90.5" height="125.5" rx="2.25"></rect>
+                                </g>
+                            </g>
+                            <text id="™" font-family="Mont-Light, Mont" font-size="3" font-weight="300" letter-spacing="-0.1393333" fill="#FFFFFF">
+                                <tspan x="50" y="66">™</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group-47" transform="translate(160.000000, 105.000000)" fill="#FFFFFF">
+                <text id="Alternative-Adherenc" font-family="MuseoSans-700, Museo Sans" font-size="10.6875" font-weight="500" line-spacing="11.8125" letter-spacing="-0.4963749">
+                    <tspan x="0" y="17">Alternative </tspan>
+                    <tspan x="0" y="28.8125">Adherence </tspan>
+                    <tspan x="0" y="40.625">Path </tspan>
+                    <tspan x="0" y="52.4375">(AAP) form</tspan>
+                </text>
+                <text id="Resource" font-family="MuseoSans-900, Museo Sans" font-size="3.375" font-weight="bold" letter-spacing="-0.04125">
+                    <tspan x="1" y="3">Resource</tspan>
+                </text>
+                <text id="Moving-forward,-all" font-family="MuseoSans-700, Museo Sans" font-size="3.375" font-weight="500" letter-spacing="-0.04125">
+                    <tspan x="1" y="63">Moving forward, all projects will </tspan>
+                    <tspan x="1" y="67">submit and pay for AAPs through </tspan>
+                    <tspan x="1" y="71">WELL Online and will no longer be </tspan>
+                    <tspan x="1" y="75">required to submit AAP forms to WELL </tspan>
+                    <tspan x="1" y="79">Assessors or to aap@wellcertified.com. </tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

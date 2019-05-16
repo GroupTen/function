@@ -1,0 +1,14 @@
+
+//------------------------------------------------------------------------------
+// IMPORTANT: This file should not generate any style rules.
+//------------------------------------------------------------------------------
+
+@import "~/node_modules/bootstrap/scss/_functions.scss";
+@import "~/node_modules/bootstrap/scss/_variables.scss";
+@import "~/node_modules/bootstrap/scss/_mixins.scss";
+
+@import "./imports/vars";
+@import "./imports/functions";
+@import "./imports/mixins";
+@import "./imports/easing";
+@import "./imports/include-media";

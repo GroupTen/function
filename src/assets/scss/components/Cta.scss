@@ -1,0 +1,145 @@
+.Cta {
+  position: relative;
+  background-position: center;
+
+  & > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .TitleBlock__title {
+    font-size: 2rem;
+    font-weight: $weight-black;
+    line-height: 1.36;
+  }
+
+  &--large {
+
+    padding: $module-offset * 1.5 0;
+    text-align: center;
+    @extend .mobile-side-pad;
+
+    @include media(">=tablet") {
+      text-align: center;
+    }
+
+
+    .Cta__contents {
+      @include make-col(12);
+      margin: 0 auto; 
+
+      @include media(">=desktop") {
+        @include make-col(9);      
+      }
+    }
+
+    .Cta__action {
+      @extend .mobile-side-pad;
+      margin: 0 auto;
+    }
+
+    .row {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      @include media(">=tablet") {
+        align-items: center;
+      }
+    }
+  }
+
+  &--medium {
+    padding: 50px 15px;
+    @extend .mobile-side-pad;
+
+    .Cta__contents {
+      @include media(">=tablet") {
+        .TitleBlock {
+          padding-bottom: 0;
+        }
+      }
+      @include media(">=desktop") {
+        @include make-col(8);       
+      }
+    }
+
+    .Cta__action {
+      @include media(">=desktop") {
+        @include make-col(3);
+      }
+    }
+
+    .row {
+      justify-content: flex-start;
+
+      @include media(">=tablet") {
+        justify-content: space-between;
+        align-items: center;
+        @include make-col(10,12);
+        @include make-col-offset(1);
+      }
+    }
+  }
+
+  &--small {
+    padding: 40px 0;
+    text-align: center;
+    @extend .mobile-side-pad;
+
+
+    .TitleBlock:not(:empty) {
+      @include media(">=tablet") {
+        padding-bottom: 0;
+      }
+    }
+    
+
+    .TitleBlock__title {
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
+
+
+
+    .Cta__contents {
+      @include make-col(12);
+
+      @include media(">=desktop") {
+        @include make-col(9);  
+        @include make-col-offset(0);
+        text-align: left;     
+      }
+    }
+
+    .Cta__action {
+      @include make-col(8);
+      @include make-col-offset(2);
+      margin: 0 auto;
+
+      @include media(">=desktop") {
+        @include make-col(2);
+        @include make-col-offset(0);
+      }
+    }
+
+    .row {
+      justify-content: space-between;
+      align-items: center;
+
+      @include media(">=desktop") {
+        @include make-col(10,12);
+        @include make-col-offset(1);
+      }
+    }
+
+    .TitleBlock {
+      padding-bottom: 0;
+    }
+  }
+
+  &.container {
+    margin-top: $module-offset;
+    margin-bottom: $module-offset;
+  }
+}

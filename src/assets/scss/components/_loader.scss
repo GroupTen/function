@@ -1,0 +1,29 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background: rgba(white, 0.875);
+  text-align: center;
+  padding-top: 200px;
+  font-size: 30px;
+  font-family: sans-serif;
+
+  span {
+    $_spinner-size: 80px;
+    position: absolute;
+    width: $_spinner-size;
+    height: $_spinner-size;
+    margin: $_spinner-size * -0.5 0 0 $_spinner-size * -0.5;
+    top: 50vh;
+    left: 50vw;
+    background-color: $blue;
+    transform: translateX(-50%);
+
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 2.0s infinite ease-in-out;
+    animation: sk-scaleout 2.0s infinite ease-in-out;
+  }
+}

@@ -1,0 +1,111 @@
+.TitleBlock {
+  @include flex(row, flex-start, center);
+  width: 100%;
+
+  &:not(:empty) {
+    padding-bottom: $mobile-module-offset;
+
+    @include media(">=tablet") {
+      padding-bottom: $module-offset / 2;
+    }
+  }
+
+  &__contents {
+    width: 100%;
+  }
+
+  &__subtitle {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: $grey-dark;
+    font-size: 14px;
+    font-weight: $weight-black;
+    letter-spacing: 1.86px;
+    line-height: 1;
+
+    .FancyText {
+      display: inline-block;
+      padding: 8px;
+      line-height: 1;
+    }
+  }
+
+  &__title {
+
+    &:only-child {
+      margin-bottom: 0;
+    }
+    &:not(:only-child) {
+      margin-bottom: $module-offset / 4;
+    }
+  }
+
+  &__caption {
+    margin: 0 auto;
+  }
+
+  &--align-left {
+    .TitleBlock__image {
+      margin-right: 10px;
+
+      img {
+        max-width: 30px;
+        height: auto;
+      }
+    }
+  }
+
+  &--align-center {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: $module-offset / 2;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 90%;
+
+    @include media(">=tablet") {
+      max-width: 75%;
+      text-align: center;
+    }
+
+    .TitleBlock__image {
+      margin-right: 0;
+      margin-bottom: $module-offset / 2;
+    }
+
+    .TitleBlock__caption {
+      margin-top: 10px;
+      
+      @include media(">=desktop") {
+        max-width: 80%;
+      }
+    }
+
+    .TitleBLock__link {
+      @include media(">=tablet") {
+        @include flex(row, center);
+      }
+    }
+  }
+
+  &--left-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// let title & captions get overridden with cls, e.g: 'title-h3'
+$hSizes: (
+  'h1': $h1-font-size, 
+  'h2': $h2-font-size,
+  'h3': $h3-font-size,
+  'h4': $h3-font-size,
+  'h5': $h5-font-size
+);
+
+@each $key, $value in $hSizes {
+  .title-#{$key} .TitleBlock__title,
+  .caption-#{$key} .TitleBlock__caption {
+    font-size: $value;
+  }
+}

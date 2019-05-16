@@ -1,0 +1,76 @@
+.QuoteList {
+  padding: $module-offset 0;
+
+  .row {
+    flex-direction: column;
+  }
+
+  &__quotes {
+    @include flex(row, center);
+
+    & > .tabs {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      width: 100%;
+
+      & > div {
+        width: 100%;
+      }
+
+      .nav {
+        justify-content: center;
+      }
+
+      .nav-tabs {
+        border: none;
+      }
+
+      .nav-item {
+        padding: 0 $module-offset / 4;
+      }
+
+      .nav-link {
+        @include flex(column, center, center);
+        opacity: 0.5;
+        
+        img {
+          margin-bottom: 10px;
+          border-radius: 50%;
+          border: 5px solid transparent;
+          mix-blend-mode: luminosity;
+        }
+
+        &.active {
+          border: none;
+          opacity: 1;
+
+          img {
+            border: 5px solid $blue;
+            mix-blend-mode: normal;
+          }
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__direct-quote {
+    font-size: 2.5rem;
+    font-family: $font-family-serif;
+    line-height: 1.125;
+    text-align: center;
+  }
+
+  &__cite-title {
+    font-weight: $weight-bold;
+  }
+
+  &__link {
+    margin-top: $module-offset / 2;
+    text-align: center;
+  }
+}

@@ -1,0 +1,89 @@
+.Iframe {
+
+  &.iframe-contact {
+    iframe {
+      height: 2000px;
+    }
+  }
+
+   &.iframe-v1-calculator {
+    iframe {
+      height: 2300px;
+    }
+
+    @include media(">=tablet") {
+    iframe {
+      height: 1500px;
+    }
+  }
+  }
+
+  &.iframe-v2-calculator {
+    iframe {
+      height: 1600px;
+    }
+
+  @include media(">=tablet") {
+    iframe {
+      height: 1200px;
+    }
+  }
+  }
+
+  &.iframe-v1-timeline {
+    iframe {
+      height: 1500px;
+    }
+  }
+
+  &.iframe-request-form {
+    iframe {
+      height: 4500px;
+    }
+  }
+
+  &.iframe-directory-people {
+
+    iframe {
+      height: 6000px;
+    }
+
+    @include media(">=tablet") {
+    iframe {
+      height: 3000px;
+    }
+  }
+}
+
+  &.iframe-directory-project {
+    iframe {
+      height: 11000px;
+    }
+
+  @include media(">=tablet") {
+    iframe {
+      height: 5100px;
+    }
+  }
+  }
+
+  &.iframe-faculty-renewal {
+    iframe {
+      height: 4500px;
+    }
+  }
+
+  &.iframe-advisories-form {
+
+  	iframe {
+      height: 1400px;
+    }
+
+    @include media(">=tablet") {
+    	iframe {
+      		height: 1100px;
+    		}
+  		}
+	}
+
+}

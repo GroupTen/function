@@ -1,0 +1,273 @@
+
+//------------------------------------------------------------------------------
+// CSSTransitionGroup Helpers
+
+// I find the class naming to be somewhat ambiguous, so
+// these mixins let you use clearer (imho) naming, and
+// saves you a bunch of typing.
+
+@mixin named-transition($name) { .anim--#{$name} { @content; } }
+@mixin pre-enter { @at-root { #{&}-enter { @content; }}}
+@mixin enter-end { @at-root { #{&}-enter#{&}-enter-active { @content; }}}
+@mixin pre-leave { @at-root { #{&}-leave { @content; }}}
+@mixin leave-end { @at-root { #{&}-leave#{&}-leave-active { @content; }}}
+
+@mixin duration($enter, $leave:null) {
+  @include enter-end { transition-duration: $enter; }
+
+  @if $leave != null {
+    @include leave-end { transition-duration: $leave; }
+  } @else {
+    @include leave-end { transition-duration: $enter; }
+  }
+}
+
+@mixin delay($enter, $leave:null) {
+  @include enter-end { transition-delay: $enter; }
+
+  @if $leave != null {
+    @include leave-end { transition-delay: $leave; }
+  } @else {
+    @include leave-end { transition-delay: $enter; }
+  }
+}
+
+@mixin easing($enter:ease-in-out, $leave:ease-in-out) {
+  @include enter-end { transition-timing-function: $enter; }
+  @include leave-end { transition-timing-function: $leave; }
+}
+
+
+//------------------------------------------------------------------------------
+// Debug helpers
+
+@mixin debug-draw () {
+  @if $__DEBUG_DRAW__ {
+    @content;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Positioning helpers
+
+// Allows us to pass various flexbox attributes.
+// @content allows us to pass others that are less used
+@mixin flex($direction:null, $justify:null, $align:null) {
+  display: flex;
+  @if $direction != null {
+      flex-direction: $direction;
+  }
+  @if $justify != null {
+      justify-content: $justify;
+  }
+  @if $align != null {
+      align-items: $align;
+  }
+  @content;
+}
+
+// Centering helper to center objects in cases when margin auto, text-align, etc won't work.
+// Many use cases involve objects with flex positioning (where display:block/inline-block breaks the flex layout)
+// $position is _optional_, as it may/may not be needed
+
+@mixin position-center($position:null, $direction:both) {
+  @if $position != null {
+    position: $position;
+  }
+
+  @if $direction == X or $direction == x {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $direction == Y or $direction == y {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Convert a px unit (ie. from a design comp) into vw units w/o doing math
+// expects to be $px at $size px wide (defaults to 1280)
+@function in-vw($px, $size:14.4px) {
+  @return #{($px / $size)}vw;
+}
+
+
+//------------------------------------------------------------------------------
+// Stylistic helpers
+
+// CTX Wrapper and Arrow Positioning (Top and Bottom Only)
+$direction: top, bottom;
+$side: left, center, right;
+
+@mixin ctx-alignment($direction, $side) {
+  $_menu-pad: 10px;
+
+  // general arrow styles that aren't reliant on $direction or $side
+  &__arrow {
+    position: absolute;
+    width: $_menu-pad;
+    height: $_menu-pad;
+    transform: rotate(45deg);
+    background: white;
+  }
+
+  // Loop through directions (in which ctx expands) and sides (where arrows are placed)
+  @each $d in $direction {
+    @each $s in $side {
+
+      // BEM : Mods
+      &--direction-#{$d}-#{$s}{
+
+        // reposition ctx top to bottom based on $direction
+        @if $d == top {
+          bottom: calc(100% + 10px);
+        } @else {
+          top: calc(100% + 10px);
+        }
+
+        // reposition ctx left to right based on $side (defaults to left)
+        @if $s == center {
+          left: 50%;
+          transform: translate(-50%, 0);
+        }
+        @if $s == right {
+          right: 0;
+        }
+
+
+        // BEM : Elements
+        .ctx-popup__arrow,
+        .ctx-menu__arrow {
+
+          // reassign arrow borders based on direction
+          @if $d == top {
+            bottom: -$_menu-pad/2;
+            border-top: 1px solid white;
+            border-right: 1px solid $grey-light;
+            border-bottom: 1px solid $grey-light;
+            border-left: 1px solid white;
+
+          } @else {
+            top: -$_menu-pad/2;
+            border-top: 1px solid $grey-light;
+            border-right: 1px solid white;
+            border-bottom: 1px solid white;
+            border-left: 1px solid $grey-light;
+          }
+
+          // position the arrow on the corresponding side
+          // $side = center needs different attributes
+          @if $s == center {
+            left: 50%;
+            margin-left: -$_menu-pad/2;
+          } @else {
+            left: inherit; // necessary b/c $side = right is inheriting left as well
+            #{$s}: $_menu-pad;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Descender underlines: allows descenders to overlay underline
+@mixin desc-underlines($color, $bg:white, $size:3px, $hover:false) {
+
+  @if $color == "reset" { // use "reset" to remove underlines as needed
+    text-shadow: initial;
+    box-shadow: initial;
+  } @else {
+
+    // create stroke around letters
+    text-shadow: 1px 0.25px 0 $bg,
+                -1px 0.25px 0 $bg,
+                 2px 0      0 $bg,
+                -2px 0      0 $bg;
+
+    // applies the underline
+    box-shadow: inset 0 (-($size - 1)) 0 0 $bg,
+                inset 0 (-$size) 0 0 $color;
+
+    @if $hover == true { // handle the hover programmatically
+      &:hover {
+        box-shadow: inset 0 (-$size) 0 0 $bg,
+                    inset 0 (-($size + 1)) 0 0 $color;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@mixin remove-desc-underlines() {
+  text-shadow: none;
+}
+
+// Creates our divider-lines with shadows (add card btns, mandatory entry divders, etc)
+@mixin divider-line($width:80%, $top:50%, $line:0.33, $shadow:0.02) {
+  &:before,
+  &:after {
+    @include position-center($direction:x);
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: $width;
+  }
+  &:before {
+    height: 5px;
+    top: calc(#{$top} + 1px);
+    opacity: $shadow;
+    background-image: linear-gradient(-180deg, $black 0%, rgba($blue, 0) 100%);
+  }
+  &:after {
+    height: 1px;
+    top: $top;
+    background: rgba($grey-light, $line);
+  }
+}
+
+// Font smoothing for autoprefixer downfall
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+// Range Input
+
+@mixin range-track {
+  &::-webkit-slider-runnable-track,
+  &::-moz-range-track,
+  &::-ms-track {
+    @content;
+  }
+}
+
+@mixin range-thumb {
+  &::-webkit-slider-thumb,
+  &::-moz-range-thumb,
+  &::-ms-thumb
+  {
+  }
+}
+
+
+@mixin colon-suffix {
+  &:after {
+    content: ':';
+    display: inline;
+  }
+}
+
+@mixin comma-suffix {
+  &:after {
+    content: ',';
+    display: inline;
+  }
+}

@@ -1,0 +1,61 @@
+.FaqList {
+  padding: $module-offset 0;
+
+  &__items {
+    @extend .mobile-side-pad;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    @include media(">=tablet") {
+      @include make-col(10,12);      
+    }
+  }
+
+  &__item {
+    border-bottom: 1px solid $grey-light;
+  }
+
+  &--eight-col {
+    @extend .mobile-side-pad;
+
+    @include media(">=tablet") {
+    @include make-col(8);
+    @include make-col-offset(2);
+    }
+  }
+
+  &__item-toggle {
+    @include flex(row, space-between);
+    color: $blue!important;
+    padding: 15px 10px 20px;
+    font-size: 16px;
+    font-weight: $weight-light;
+
+    span {
+      max-width: 90%;
+    }
+
+    &[aria-expanded="true"] {
+      background: $blue5;
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    width: 100%;
+  }
+
+  &__item-content {
+    padding: 10px 10px 20px;
+  }
+
+  &__link {
+    padding-top: 20px;
+  }
+}

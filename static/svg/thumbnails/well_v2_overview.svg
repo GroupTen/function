@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="220px" viewBox="0 0 240 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6 Copy 36</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="26.9322959%" y1="23.1965808%" x2="59.7523034%" y2="60.9377149%" id="linearGradient-1">
+            <stop stop-color="#4DCDFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy" transform="translate(-78.000000, -33.000000)">
+            <g id="Group-52" transform="translate(91.000000, 49.000000)">
+                <g transform="translate(44.000000, 3.000000)">
+                    <g>
+                        <polygon id="Path-3" fill="url(#linearGradient-1)" style="mix-blend-mode: multiply;" opacity="0.165625" filter="url(#filter-2)" points="122.170514 4 278 161.2484 133.886954 258 2 168.549369"></polygon>
+                        <g id="Group-49" transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
+                            <g id="Group-44" fill="#FFFFFF">
+                                <g id="Group-62" transform="translate(23.000000, 4.000000)">
+                                    <rect id="Rectangle-7" x="0" y="0" width="101" height="159"></rect>
+                                    <rect id="Rectangle-7-Copy-2" x="2" y="4" width="101" height="159"></rect>
+                                    <rect id="Rectangle-7-Copy-3" x="3" y="6" width="101" height="159"></rect>
+                                </g>
+                                <rect id="Rectangle-31" stroke="#51D6FF" stroke-width="0.75" x="0.375" y="0.375" width="121.25" height="169.25"></rect>
+                            </g>
+                            <g id="Group-44-Copy" transform="translate(15.000000, 21.000000)" fill="#51D6FF" stroke="#FFFFFF" stroke-width="1.5">
+                                <g id="Group-48">
+                                    <rect id="Rectangle-31" x="0.75" y="0.75" width="90.5" height="125.5" rx="2.25"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group-47" transform="translate(160.000000, 117.000000)" fill="#FFFFFF">
+                <text id="WELL-v2-Overview" font-family="MuseoSans-700, Museo Sans" font-size="10.6875" font-weight="500" line-spacing="11.8125" letter-spacing="-0.4963749">
+                    <tspan x="0" y="18">WELL v2 </tspan>
+                    <tspan x="0" y="29.8125">Overview</tspan>
+                </text>
+                <text id="™" font-family="Mont-Light, Mont" font-size="3" font-weight="300" letter-spacing="-0.1393333">
+                    <tspan x="25" y="12">™</tspan>
+                </text>
+                <text id="Resource" font-family="MuseoSans-900, Museo Sans" font-size="3.375" font-weight="bold" letter-spacing="-0.04125">
+                    <tspan x="0" y="3">Resource</tspan>
+                </text>
+                <text id="Learn-more-about-the" font-family="MuseoSans-700, Museo Sans" font-size="3.375" font-weight="500" letter-spacing="-0.04125">
+                    <tspan x="1" y="40">Learn more about the goals, </tspan>
+                    <tspan x="1" y="44">pricing structure and </tspan>
+                    <tspan x="1" y="48">architecture of the next </tspan>
+                    <tspan x="1" y="52">version of WELL.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

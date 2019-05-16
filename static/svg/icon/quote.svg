@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="47px" height="41px" viewBox="0 0 47 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>quote</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Card/Quote---Right" transform="translate(-35.000000, -68.000000)" fill="#111111" fill-rule="nonzero">
+            <g id="quote" transform="translate(36.000000, 69.000000)">
+                <path d="M1,19.4736842 L1,38 L15,38 L15,19.4736842 L1,19.4736842 Z M17,17.4736842 L17,40 L-1,40 L-1,18.4736842 C-1,8.58903837 2.59662517,2.05525513 9.60937239,-0.920548787 L10.3906276,0.920548787 C4.41228342,3.45741195 1.2395518,8.91329458 1.01305167,17.4736842 L17,17.4736842 Z" id="Shape"></path>
+                <path d="M30,19.4736842 L30,38 L44,38 L44,19.4736842 L30,19.4736842 Z M46,17.4736842 L46,40 L28,40 L28,18.4736842 C28,8.58903837 31.5966252,2.05525513 38.6093724,-0.920548787 L39.3906276,0.920548787 C33.4122834,3.45741195 30.2395518,8.91329458 30.0130517,17.4736842 L46,17.4736842 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

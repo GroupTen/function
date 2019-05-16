@@ -1,0 +1,52 @@
+.Quote {
+  padding: 5% 0;
+
+  &__image {
+
+    .Quote--left & {
+      @include media(">=desktop") {
+        @include make-col-offset(1, 12);        
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__link {
+    margin-top: 20px;
+  }
+
+  &--left {
+    & > .row {
+      @include media("<=desktop-sm") {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .Quote__image {
+      @include media("<=desktop") {
+        text-align: center;
+        
+        img {
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  &--right {
+    & > .row {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+  }
+
+  blockquote {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: $weight-light;
+  }
+}

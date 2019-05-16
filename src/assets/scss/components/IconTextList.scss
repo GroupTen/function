@@ -1,0 +1,368 @@
+$lists: 'IconTextList', 'IconTextListCollapse';
+@each $type in $lists {
+  .#{$type} {    
+    @extend .module-offset;
+
+    &__title {
+      padding-bottom: 1rem;
+      font-size: 2.25rem;
+    }
+
+    &__cols {
+      @include make-col(12);
+      @include make-col-offset(0);
+      @extend .mobile-side-pad;
+
+      @include media(">=desktop") {
+        @include make-col(10);
+        @include make-col-offset(1);
+      }
+    }
+
+    &__items {
+      @extend .mobile-side-pad;
+
+      display: inline;
+      justify-content: left;
+
+      @include media(">=tablet") {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      }
+    }
+
+    &__item {
+
+
+      display: inline;
+      justify-content: left;
+
+      
+      display: flex;
+      justify-content: center;
+      margin-bottom: $mobile-module-offset;
+
+      @include media(">=tablet") {
+        margin-bottom: $module-offset / 4;
+      }
+
+      img {
+        width: 40px;
+        flex-shrink: 0;
+        display: block;
+        height: auto;
+        position: relative;
+      }
+    }
+
+    &__image {
+      @include make-col(2, 12);
+      @include flex(row, center, flex-start);
+    }
+
+    &__content {
+
+      @include media(">=tablet") {
+        @include make-col(10, 12);
+      }
+
+      h4 .text-large {
+        font-size: 100px;
+      }
+    }
+
+    &__content-link {
+      @include flex(row, flex-start);
+    }
+
+    &__link {
+      @include flex(row, center);
+    }
+
+    &__collapse.show,
+    &__collapse.collapsing {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @for $i from 1 through 4 {
+      &--#{$i}-up {
+        .#{$type}__item {
+          @include media(">=tablet") {
+            width: calc((100% / #{$i}) - (#{$i} * 2px));
+          }
+        }
+      }
+
+      &--#{$i}-up-center {
+        .#{$type}__content-link {
+          justify-content: center;
+          margin-bottom: 20px;
+
+          @include media(">=tablet") {
+          justify-content: center;
+        }
+        }
+      }
+    }
+
+    &--1-up {
+      @include make-col(12);
+      @include make-col-offset(0);
+
+      @include media(">=tablet") {
+        @include make-col(10);
+      @include make-col-offset(1);
+    }
+
+    /*
+      .#{$type}__content {
+        @include media("<tablet") {
+          padding-left: 20px;
+        }
+      }
+      */
+    }
+
+    &--2-up {
+      .#{$type}__content {
+          text-align: center;
+      }
+    }
+
+    &--3-up,
+    &--4-up {
+      .#{$type}__item {
+
+        @include media(">=tablet") {
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+        }
+      }
+      .#{$type}__image {
+        width: 83.33333%;
+        max-width: 83.33333%;
+        justify-content: flex-start;
+        padding-bottom: 20px;
+      }
+    }
+
+    &--1-up-center {
+      .#{$type}__title {
+        padding-bottom: 5rem;
+      }
+
+      .#{$type}__items {
+        @include make-col(10);
+        @include make-col-offset(1);
+      }
+
+      .#{$type}__item {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .#{$type}__image {
+        margin-bottom: 10px;
+        flex: initial;
+        max-width: 100%;
+
+        img {
+          width: auto;
+        }
+      }
+
+      .#{$type}__content {
+        h4 {
+          text-align: center;
+        }
+      }
+    }
+
+    &--2-up-center {
+      @extend .#{$type}--2-up;
+
+      .#{$type}__title {
+        padding-bottom: 5rem;
+      }
+
+      .#{$type}__items {
+
+        @include media(">=tablet") {
+          @include make-col(12);;
+        }
+      }
+
+      .#{$type}__item {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .#{$type}__image {
+        margin-bottom: 20px;
+        flex: initial;
+        max-width: 100%;
+        min-height: 100px;
+
+        img {
+          width: auto;
+          max-width: 150px;
+        }
+      }
+
+      .#{$type}__content {
+        h4 {
+          text-align: center;
+        }
+      }
+    }
+
+    &--3-up-center {
+      @extend .#{$type}--3-up;
+
+      .#{$type}__title {
+        padding-bottom: 5rem;
+      }
+
+      .#{$type}__cols {
+        @include media(">=desktop") {
+          @include make-col(10);
+          @include make-col-offset(1);
+        }
+      }
+
+      .#{$type}__items {
+        @include media(">=desktop") {
+          text-align: center;
+        }
+      }
+
+      .#{$type}__item {
+        @include media("<desktop") {
+          justify-content: flex-start;
+          // padding-left: 40px;
+          // @include make-col(10);
+          // @include make-col-offset(1);
+        }
+
+        @include media(">=desktop") {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      .#{$type}__image {
+        @include make-col(2, 12);
+        justify-content: center;
+        padding-bottom: 0;
+
+        @include media("<desktop") {
+          align-items: baseline;
+        }
+
+        @include media(">=desktop") {
+          margin-bottom: 20px;
+        }
+      }
+
+      .#{$type}__content {
+        @include media("<desktop") {
+          padding-right: 0;
+          padding-left: 10px;
+          text-align: left;
+        }
+        @include media(">=desktop") {
+          @include make-col(11, 12);
+        }
+      }
+    }
+
+    &--4-up-center {
+      @extend .#{$type}--4-up;
+
+      .#{$type}__title {
+        padding-bottom: 5rem;
+      }
+
+      .#{$type}__cols {
+        @include media(">=desktop") {
+          @include make-col(10);
+          @include make-col-offset(1);
+        }
+      }
+
+      .#{$type}__cols {
+        @include media(">=desktop") {
+          @include make-col(12,12);
+          @include make-col-offset(0,12);
+        }
+      }
+
+      .#{$type}__items {
+        @include media(">=desktop") {
+          text-align: center;
+        }
+      }
+
+      .#{$type}__item {
+        @include media("<desktop") {
+          justify-content: flex-start;
+          /* padding-left: 40px; */
+          @include make-col(10);
+          @include make-col-offset(1);
+        }
+
+        @include media(">=desktop") {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      .#{$type}__image {
+        @include make-col(2, 12);
+        justify-content: center;
+        padding-bottom: 0;
+
+        @include media("<desktop") {
+          align-items: baseline;
+        }
+
+        @include media(">=desktop") {
+          padding-bottom: 20px;
+        }
+      }
+
+      .#{$type}__content {
+        @include media("<desktop") {
+          padding-right: 0;
+          padding-left: 10px;
+          text-align: left
+        }
+        @include media(">=desktop") {
+          @include make-col(11, 12);
+        }
+      }
+    }
+
+    h4 {
+      font-weight: $weight-bold;
+    }
+  }
+}
+
+
+.text-large {
+  .IconTextList__content h4 { 
+    font-size: 50px;
+    line-height: 1;
+  }
+}
+
+
+

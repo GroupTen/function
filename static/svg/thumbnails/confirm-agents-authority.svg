@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="220px" viewBox="0 0 240 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6 Copy 42</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-7" transform="translate(-78.000000, -33.000000)">
+            <g id="Group-70-Copy" transform="translate(105.000000, 76.000000)">
+                <g id="Group-50">
+                    <g id="Group-45" fill-rule="nonzero">
+                        <path d="M91.5995646,25.5 L188.25,25.5 C190.321068,25.5 192,27.1789322 192,29.25 L192,135.75 C192,137.821068 190.321068,139.5 188.25,139.5 L15.7896462,139.5 C13.7185784,139.5 12.0396462,137.821068 12.0396462,135.75 L12.0396462,34.222155 L12,34.222155 L12,10.35 C12,8.3617749 13.6117749,6.75 15.6,6.75 L78.8188666,6.75 C80.1120554,6.75 81.3058868,7.44361608 81.9463501,8.56706787 L91.5995646,25.5 Z" id="Combined-Shape-Copy-15" fill="#F6F6F6"></path>
+                        <rect id="Rectangle-15" fill="#7DBDD0" x="75.75" y="9" width="107.25" height="30" rx="3.75"></rect>
+                        <rect id="Rectangle-32" fill="#E5E5E5" transform="translate(106.125000, 52.125000) rotate(1.000000) translate(-106.125000, -52.125000) " x="31.5" y="15" width="149.25" height="74.25"></rect>
+                        <rect id="Rectangle-32-Copy" fill="#F2F2F2" transform="translate(106.125000, 53.625000) rotate(-2.000000) translate(-106.125000, -53.625000) " x="31.5" y="16.5" width="149.25" height="74.25"></rect>
+                        <path d="M4.125,27.097155 L4.16464618,27.097155 L4.16464618,129 C4.16464618,130.863961 5.67568515,132.375 7.53964618,132.375 L180,132.375 C181.863961,132.375 183.375,130.863961 183.375,129 L183.375,22.5 C183.375,20.636039 181.863961,19.125 180,19.125 L83.1316896,19.125 L73.3705706,2.00278996 C72.7968222,0.996364407 71.7273482,0.375 70.5688666,0.375 L7.35,0.375 C5.56888168,0.375 4.125,1.81888168 4.125,3.6 L4.125,27.097155 Z" id="Combined-Shape-Copy-14" stroke="#51D6FF" stroke-width="0.75" fill="#B7EEFF"></path>
+                    </g>
+                    <text id="Confirmation-of-Agen" font-family="MuseoSans-700, Museo Sans" font-size="11.4" font-weight="500" line-spacing="12.6" letter-spacing="-0.5294666" fill="#547F8D">
+                        <tspan x="18.25" y="64.7">Confirmation </tspan>
+                        <tspan x="18.25" y="77.3">of Agent's </tspan>
+                        <tspan x="18.25" y="89.9">Authority</tspan>
+                    </text>
+                    <text id="Resource" font-family="MuseoSans-900, Museo Sans" font-size="3.6" font-weight="bold" letter-spacing="-0.044" fill="#547F8D">
+                        <tspan x="18.85" y="45.5">Resource</tspan>
+                    </text>
+                    <text id="May-2018" font-family="MuseoSans-700, Museo Sans" font-size="3.6" font-weight="500" letter-spacing="-0.044" fill="#547F8D">
+                        <tspan x="18.85" y="98.9">May 2018</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

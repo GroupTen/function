@@ -1,0 +1,305 @@
+//------------- Type Baseline could go here....
+
+::selection {
+  color: white;
+  background: $blue;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  @include font-smoothing();
+  font-family: $font-family-sans-serif;
+  color: $grey-dark;
+}
+
+h1 {
+  font-family: $font-family-serif;
+  font-size: 2rem;
+  font-weight: $weight-bold;
+  line-height: 0.9667;
+  letter-spacing: -0.66px;
+
+  @include media(">=tablet") {
+    font-size: 3rem;
+  }
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-family: $font-family-sans-serif;
+  font-size: 1.75rem;
+  font-weight: $weight-black;
+  line-height: 1;
+  letter-spacing: -0.10px;
+
+  @include media(">=desktop") {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+}
+
+h5 {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: $weight-medium;
+}
+
+h6 {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: $weight-blackout;
+  letter-spacing: 1.86px;
+  line-height: 1;
+}
+
+body {
+  font-weight:500;
+  font-size: 1rem;
+}
+
+li {
+  color: $grey-dark;
+}
+
+a {
+  color: darken($v2-blue, 20%);
+
+  &:hover {
+    color: darken($v2-blue, 40%);
+  }
+}
+
+
+
+
+//------------- Ringo utility classes
+
+$percents: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+$blends: multiply, color, screen, overlay, darken, lighten, color-dodge, color-burn, hard-light, soft-light, difference, exclusion, hue, saturation, luminosity, normal;
+$listItemIconList: check, globe;
+
+
+@each $icon in $listItemIconList {
+  .listicon-#{$icon} {
+    $_icon-size: 20px;
+
+    ul {
+      padding-left: $_icon-size;
+    }
+    ul li {
+      position: relative;
+      list-style: none;
+      margin-left: $_icon-size;
+      padding-bottom: $_icon-size / 2;
+
+      &:before {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        top: 4px;
+        left: -$_icon-size / 2;
+        width: $_icon-size;
+        height: $_icon-size * 0.75;
+        background-color: $blue;
+        // background-image: url("~/svg/icon/#{$icon}.svg");
+        -webkit-mask:  url("~/svg/icon/#{$icon}.svg") no-repeat 50% 50%;
+        mask: url("~/svg/icon/#{$icon}.svg") no-repeat 50% 50%;
+        background-size: $_icon-size $_icon-size * 0.75;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: translateX(-100%);
+      }
+    }
+  }
+}
+
+@each $key, $value in $colorMap {
+  .bg-#{$key} {
+    background-color: $value!important;
+  }
+  .bg-mobile-#{$key} {
+    @include media("<tablet") {
+      background-color: $value!important;
+    }
+  }
+  .color-#{$key} {
+    &, h1, h2, h3, h4, h5, h6, p {
+      color: $value!important;
+    }
+    .icon, .simple-svg-wrapper, svg {
+      fill: $value!important;
+    }
+  }
+
+  .bg-skew-#{$key} {
+    position: relative;
+    background-color: none!important;
+
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: calc(100% + #{$module-offset * 2});
+      top: -$module-offset / 2;
+      -webkit-transform: skewY(-8deg);
+      transform: skewY(-8deg);
+      background: $value!important;
+    }
+  }
+
+  .bg-curved-before-#{$key} {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 200px;
+      top: -198px;
+      left: 0;
+      z-index: -1;
+      background-color: $value;
+      -webkit-mask:  url('https://a.storyblok.com/f/52232/x/b0cb142e3c/curve.svg') no-repeat 50% 50%;
+      mask: url('https://a.storyblok.com/f/52232/x/b0cb142e3c/curve.svg') no-repeat 50% 50%
+    }
+  }
+
+  .bg-curved-after-#{$key} {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 200px;
+      bottom: -198px;
+      left: 0;
+      z-index: -1;
+      background-color: $value;
+      -webkit-mask:  url('http://a.storyblok.com/f/52232/x/e86a606174/curve-after.svg') no-repeat 50% 50%;
+      mask: url('http://a.storyblok.com/f/52232/x/e86a606174/curve-after.svg') no-repeat 50% 50%
+    }
+  }
+
+  .listicon-#{$key} ul li:before {
+    background-color: $value;
+  }
+
+  @each $per in $percents {
+
+    .overlay-#{$key}-#{$per} {
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba($value, $per * 0.01);
+      }
+    }
+  }  
+}
+
+@each $blend in $blends {
+  .blend-mode-#{$blend} {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: $blend;
+    }
+  }
+}
+
+@each $key, $value in $weightMap {
+  .weight-#{$key} {
+    font-weight: $value!important;
+  }
+}
+
+.bg-none {
+  background: none!important;
+}
+
+.hidden {
+  display: none;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.image-round,
+.image-round img {
+  border-radius: 100%;
+}
+
+.mobile-side-pad {
+  $_mobile-side-pad: 24px;
+  @include media("<=tablet") {
+    padding-left: 24px!important;
+    padding-right: 24px!important;
+  }
+}
+
+.module-offset {
+  padding: $mobile-module-offset*2 0;
+
+  @include media(">=tablet") {
+    padding: $module-offset 0;
+  }
+}
+
+.module-offset-top {
+  padding-top: $mobile-module-offset!important;
+  @include media(">=tablet") {
+    padding-top: $module-offset!important;
+  }
+}
+
+.module-offset-bottom {
+  padding-bottom: $mobile-module-offset!important;
+  @include media(">=tablet") {
+    padding-bottom: $module-offset!important;
+  }
+}
+
+
+// .page-enter-active {
+//   animation: enter .20s ease-out both;
+// } 
+// .page-leave-active {
+//   animation: exit .20s ease-in both;
+// } 
+// @keyframes enter {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
+// @keyframes exit {
+//   0% {
+//     opacity: 1;
+//     transform: translate(0,0);
+//   }
+//   100% {
+//     opacity: 0;
+//     transform: translate(0, 50px);
+//   }
+// }
+
+.error-page {
+  overflow: hidden;
+}

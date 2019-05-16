@@ -1,0 +1,212 @@
+//------------------------------------------------------------------------------
+// Dev-time helpers
+// Enable if needed & disable before committing.
+
+$__DEBUG_DRAW__: false;
+
+//------------------------------------------------------------------------------
+// Color Palette
+
+$v1-blue: #459DB7;
+$v2-blue: #459DB7;
+
+$coral: #FF1A5F;
+$salmon: #FFCBB5;
+$teal: #5ECBC9;
+$canary: #FCFFC0;
+$orange: #DD5217;
+$orange-light: #FCF8F7;
+
+$black: #4B4B4B;
+$grey-dark: #515150;
+$grey-mid: #949494;
+$grey-light: #D8D8D8;
+$grey-ghost: #FAFAFA;
+$white: #FFF;
+
+$blue5  : #F9FDFD;
+$blue10 : #E1F3F4;
+$blue20 : #C1E5E9;
+$blue30 : #92CAD2;
+$blue40 : #3C9DB6;
+$blue50 : #0C7B97;
+$blue60 : #095A6D;
+$blue70 : #134249;
+$blue80 : #0A2A2D;
+
+$blue: $blue50;
+$blue-light: $blue10;
+
+// -------------------
+
+$green10 : #142821;
+$green20 : #23483C;
+$green30 : #A8D6AD;
+$green40 : #62A984;
+$green50 : #3F927D;
+$green60 : #2E6B5D;
+$green70 : #23483C;
+$green80 : #142821;
+
+$green : $green50;
+$green-light: $green20;
+// -------------------
+
+$orange10 : #F9F4F2;
+$orange20 : #F9E6D7;
+$orange30 : #EDCCB6;
+$orange40 : #DBA082;
+$orange50 : #B95A32;
+$orange60 : #944327;
+$orange70 : #722E0D;
+$orange80 : #3F1904;
+
+$orange: $orange50;
+$orange-light: $orange20;
+$cream: $orange10; //#fbf7f1;
+
+// -------------------
+// can we kill these...
+$air: #154248;
+$water: #17667F;
+$nourishment: #0E7C9B;
+$light: #399EB9;
+$movement: #91CED5;
+$thermal: #A7D6AD;
+$sound: #63AA85;
+$material: #3F947E;
+$mind: #2B6B5E;
+$community: #21483D;
+
+// to here... ?
+
+
+$primary: $blue;
+$primary-light: $blue-light;
+$secondary: $orange;
+$primary-light: $orange-light;
+
+$colorMap: (
+  primary: $primary,
+  secondary: $secondary,
+  white: $white,
+  black: $black,
+  greyDark: $grey-dark,
+  greyLight: $grey-light,
+  greyGhost: $grey-ghost,
+  blue: $blue,
+  blueLight: $blue-light,
+  green: $green,
+  orange: $orange,
+  orangeLight: $orange-light,
+  coral: $coral,
+  salmon: $salmon,
+  teal: $teal,
+  canary: $canary,
+  cream:$cream,
+  air:$air,
+  water:$water,
+  nourishment:$nourishment,
+  light:$light,
+  movement:$movement,
+  thermal:$thermal,
+  sound:$sound,
+  material:$material,
+  mind:$mind,
+  community:$community,
+
+  'blue5' : $blue5,
+  'blue10': $blue10,
+  'blue20': $blue20,
+  'blue30': $blue30,
+  'blue40': $blue40,
+  'blue50': $blue50,
+  'blue60': $blue60,
+  'blue70': $blue70,
+  'blue80': $blue80,
+
+  'green10': $green10,
+  'green20': $green20,
+  'green30': $green30,
+  'green40': $green40,
+  'green50': $green50,
+  'green60': $green60,
+  'green70': $green70,
+  'green80': $green80,
+
+  'orange10': $orange10,
+  'orange20': $orange20,
+  'orange30': $orange30,
+  'orange40': $orange40,
+  'orange50': $orange50,
+  'orange60': $orange60,
+  'orange70': $orange70,
+  'orange80': $orange80
+);
+
+//------------------------------------------------------------------------------
+// Font Config
+
+$font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',sans-serif;
+$font-family-sans-serif: 'museo-sans', $font-system;
+$font-family-serif: 'moderno-fb', $font-family-sans-serif;
+$font-family-rounded: 'museo-sans-rounded', $font-family-sans-serif;
+$font-family-monospace:   'Source Code Pro', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Monaco', 'Courier New', monospace;
+
+
+$weight-xlight:   100;
+$weight-light:    300;
+
+$weight-normal:   300;
+$weight-regular:  $weight-normal;
+
+$weight-medium:   500;
+$weight-bold:     600;
+$weight-black:    700;
+$weight-blackout: 900;
+
+$weightMap: (
+  xlight: $weight-xlight,
+  light: $weight-light,
+  normal: $weight-normal,
+  regular: $weight-regular,
+  medium: $weight-medium,
+  bold: $weight-bold,
+  black: $weight-black,
+  blackout: $weight-blackout
+);
+
+// Typography
+$font-size-base: 1rem;
+$font-size-textbox: in-rems(18px);
+
+
+//------------------------------------------------------------------------------
+// Spacing vars
+
+$module-offset: 6.25vw;
+$mobile-module-offset: 20px;
+
+
+
+//------------------------------------------------------------------------------
+// Bootstrap Theming
+
+
+// --- Color Overrides
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $coral
+);
+
+$body-bg: $white;
+$body-color: $black;
+
+$yiq-text-light: $white;
+$yiq-text-dark: $grey-dark;
+
+
+// --- Type Overrides
+$font-family-base: $font-family-sans-serif;

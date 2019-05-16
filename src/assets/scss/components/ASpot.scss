@@ -1,0 +1,394 @@
+$_overlap-amount: 4vw;
+
+.ASpot {
+
+  @include flex(row, flex-start, center);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 650px;
+
+  & > div:not(.ASpot__video) {
+    z-index: 1;
+  }
+
+  &:not(.boxed) .ASpot__title {
+    font-size: 3rem;
+    font-weight: $weight-black;
+    line-height: 1.333333333;
+
+    @include media("<desktop-sm") {
+    padding: 0 2%;
+  }
+
+  }
+
+  &__single-slide,
+  &__slider {
+    position: relative;
+    width: 100%;
+    height: 250px;
+
+    @include media(">=tablet") {
+      height: 450px
+    }
+
+    @include media(">=tablet") {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__single-slide {
+    @include media(">=desktop-sm") {
+      overflow: hidden;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    font-weight: $weight-bold;   
+  }
+
+  &__video {
+    @include media(">=desktop-sm") {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    video {
+      width: 100%;
+      min-height: 100%;
+    }
+  }
+
+  &__image {
+    text-align: center;
+
+    @include media("<desktop") {
+    margin-bottom: -7vw;
+    }
+  }
+
+
+  &__links {
+    display: flex;
+    justify-content: flex-start;
+
+    .Btn:not(:only-child) {
+      @include media("<tablet") {
+        flex: 1;
+      }
+    }
+  }
+
+  &__link {
+
+    &:first-child:not(:only-child) {
+      margin-right: 10px;
+    }
+  }
+
+  & > .container {
+    @include media("<desktop-sm") {
+      padding: 0;
+    }
+
+    & > .row {
+      @include media("<desktop-sm") {
+        margin: 0;
+      }
+    }
+  }
+
+  &.has-content-image {
+    margin-bottom: $_overlap-amount;
+  }
+
+  &--center {
+    @include flex(column, center, center);
+
+    .ASpot__title,
+    .ASpot__caption,
+    .ASpot__subtitle {
+      text-align: center;
+    }
+  }
+
+  &--content-left,
+  &--content-center,
+  &--content-right {
+    $_boxed-offset: 3vw;
+
+    flex-direction: column;
+    min-height: 500px;
+
+    &.boxed {
+      margin-bottom: 0;
+    }
+
+    & > .container > .row {
+      width: 100%;
+    }
+
+    &:not(.boxed) {
+      & > .container {
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        @include media("<desktop") {
+          padding-bottom: $module-offset;
+        }
+      }
+
+      & + div {
+        padding-top: $module-offset;
+      }
+    }
+
+    @include media("<desktop-sm") {
+      min-height: initial;
+      margin-bottom: 0;
+    }
+
+    &.boxed {
+      & > .container {
+        @include media(">=desktop-sm") {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .ASpot__text {
+        padding: $_boxed-offset * 2;
+
+        @include media(">=tablet") {
+            width: 70%;
+            margin: 15% auto;
+            position: relative;
+            bottom: 0;
+            padding: $_boxed-offset;
+        }
+
+        @include media(">desktop") {
+          bottom: -$_boxed-offset;
+          position: absolute;
+          max-width: 31vw;
+          margin: 0;
+        }
+      }
+
+      .ASpot__title {
+        margin-bottom: $_boxed-offset / 3;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .ASpot__caption {
+        @include media(">=desktop-sm") {
+          margin-top: calc(-#{$_boxed-offset / 2} + 1vw);
+        }
+      }
+
+      .ASpot__video {
+        margin-bottom: -40px;
+
+        & + .container .ASpot__text {
+          @include media(">=desktop-sm") {
+            bottom: 0;
+          }
+        }
+
+        @include media(">=desktop-sm") {
+          height: calc(100% - #{$_boxed-offset});
+          margin-bottom: initial;
+          overflow: hidden;
+        }
+      }
+
+      & + div {
+        @include media(">=desktop-sm") {
+          padding-top: $_boxed-offset + $module-offset;
+        }
+      }
+    }
+    @each $key, $value in $colorMap {
+      &.boxed-#{$key} {
+        .ASpot__text {
+          background-color: $value!important;
+        }
+      }
+    }
+  }
+
+  &--content-left {
+    .ASpot__text {
+      left: 0;
+    }
+
+    .ASpotSingle { 
+      @include media("<tablet") { 
+        background-position: right;
+      }
+    }
+
+    .ASpotSingle__small-caption {
+      width: 100%;
+      right: 0;
+      text-align: right;
+
+      @include media(">=desktop-sm") {
+        right: 40px;
+      }
+    }
+  }
+  &--content-center {
+    @extend .ASpot--center;
+
+    .ASpot__text {
+      margin: 0 auto;
+    }
+
+    .ASpot__text,
+    .ASpot__contents {
+
+      text-align: center;
+      
+      @include media(">=tablet") {
+        @include make-col(10);
+        @include make-col-offset(1);
+      }
+
+      @include media(">=desktop-sm") {
+        @include make-col(8, 12);
+        @include make-col-offset(2, 12);
+      }
+    }
+
+    .ASpotSingle__small-caption {
+      right: 40px;
+    }
+
+    .ASpot__contents-image {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 5px;
+    }
+
+    .ASpot__links {
+      justify-content: center;
+    }
+
+    &.boxed {
+      .ASpot__text {
+        @extend .mobile-side-pad;
+        
+        @include media(">=desktop") {
+          left: 50%;
+          margin: 0;
+          transform: translateX(-50%);
+          text-align: center;
+        }
+      }
+    }
+
+    &:not(.boxed) .ASpot__slider,
+    &:not(.boxed) .ASpot__single-slide {
+      .container {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .row {
+        width: 100%;
+      }
+    }
+  }
+
+  &--content-right {
+    .ASpot__text {
+      right: 0;
+    }
+
+    .ASpotSingle__small-caption {
+      left: 40px;
+    }
+
+    &:not(.boxed) {
+      .container {
+        justify-content: flex-end;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.ASpot__contents {
+  %overlap {
+    margin-bottom: -$_overlap-amount;
+  }
+
+  &:only-child {
+    width: 100%;
+  }
+
+  &-caption {
+    
+  }
+
+  &-title {
+    font-size: 48px;
+    font-weight: $weight-light;
+    line-height: 1.333333333;
+  }
+
+  &-content {
+    font-weight: $weight-light;
+
+    p {
+      font-size: 24px;
+    }
+  }
+
+  &-image {
+    @extend %overlap;
+  }
+
+  &-bgImage {
+    @extend %overlap;
+    margin-top: 2.5vw;
+  }
+}
+
+.ASpotSingle {
+  position: relative;
+  height: 100%;
+
+  & > .container,
+  & > .container > .row {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  &__small-caption {
+    position: absolute;
+    bottom: 20px;
+    text-shadow: 0 0 5px $grey-dark;
+    letter-spacing: 1.3px;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,377 @@
+$_Timeline_step-icon-size: 55px;
+
+.Timeline {
+  padding: $module-offset 0;
+
+  &__steps {
+    position: relative;
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    @include media(">=desktop") {
+      padding: 0 20px;
+    }
+  }
+
+  &__step {
+    position: relative;
+    margin-bottom: 40px;
+    counter-increment: step-counter;
+
+    @include media(">=tablet") {
+      @include make-row();
+    }
+
+    .RichText {
+      padding: 0;
+
+      .TitleBlock {
+        padding-bottom: 10px;
+
+        &__caption {
+          font-weight: $weight-bold;
+        }
+      }
+    }
+
+    .RichText__content {
+      margin-left: 0;
+      padding-right: 0;
+      justify-content: flex-start;
+
+      @include media(">=desktop") {
+        @include make-col(6);
+        @include make-col-offset(0);
+      }
+    }
+  }
+
+  &__step-number {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: $_Timeline_step-icon-size;
+    height: $_Timeline_step-icon-size;
+    left: 50%;
+    padding-top: 12px;
+
+    color: $white;
+    background: $grey-dark;
+    border-radius: 100%;
+
+    font-size: 21px;
+    font-weight: $weight-bold;
+
+    @include media(">=tablet") {
+      & {
+        left: 0;
+      }
+    }
+
+    @each $key, $value in $colorMap {
+      .stepColor--#{$key} & {
+        background: $value;
+      }
+    }
+
+    .simple-svg-wrapper {
+      transform: scale(0.6) translateY(-3px);
+      transform-origin: center center;
+    }
+  }
+
+  &__step-details {
+    position: initial;
+    margin: 0;
+
+    & > .d-flex {
+      @include media("<=tablet") {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
+  &__step-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: $weight-bold;
+  }
+
+  &__step-caption,
+  &__step-caption > * {
+    font-weight: $weight-bold;
+  }
+
+  &__step-content {
+    font-size: 14px;
+    line-height: 1.375;
+
+    p, li, ol {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    p, li, ol {
+      color: rgba($black, 0.5);
+      font-weight: $weight-light;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      position: relative;
+
+      @include media(">=tablet") {
+        &:before {
+          content: '';
+          display: none;
+          position: absolute;
+          width: 2.0833333vw;
+          height: 1px;
+          background: black;
+          left: 0;
+          top: 50%;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          top: 50%;
+          left: -14px;
+          background: $black;
+          border-radius: 100%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      @include media(">=992px") {
+        &:before,
+        &:after {
+          display: block;
+          left: calc(-14px - #{$_Timeline_step-icon-size});
+        }
+      }
+
+      &--reverse {
+
+        &:after {
+          background: white;
+          border: 1px solid black;
+        }
+      }
+    }
+  }
+
+  &__step-illustration {
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__link {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  &--linear {
+    @include make-col(12);
+    @include make-col-offset(0);
+
+    @include media(">=tablet") {
+      @include make-col(8, 12);
+      @include make-col-offset(2, 12);
+    }
+
+    .Timeline__steps {
+      @include media("<tablet") {
+        padding: 0;
+      }
+    }
+
+    .Timeline__step {
+      // align-items: center;
+      margin-bottom: $module-offset / 2;
+    }
+
+    .Timeline__step-details {
+      @include media("<tablet") {
+        padding: 0;
+      }
+    }
+
+    .Timeline__step-number {
+      @include media("<tablet") {
+        transform: translateX(-50%);
+      }
+
+      @include media(">=tablet") {
+        top: 5px;
+      }
+    }
+
+    .Timeline__step-description {
+      @include flex(column, center);
+      @include media("<tablet") {
+        padding: 0;
+      }
+      @include media(">=desktop") {
+        flex: 1;
+        max-width: none;
+        padding-right: 0;
+      }
+    }
+
+    .Timeline__step-details {
+      @include media("<tablet") {
+        margin-bottom: 75px;
+      }
+
+
+      @include media(">=desktop") {
+        @include make-col(11);
+      }
+    }
+    .Timeline__step-illustration {
+      @include media("<tablet") {
+        @include make-col(8,12);
+        @include make-col-offset(2,12);
+      }
+      @include media(">=desktop") {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &--joined {
+    padding-bottom: 0;
+    
+    .Timeline__step {
+      margin-bottom: 0;
+      padding-bottom: 40px;
+
+      @include media(">=tablet") {
+        @include make-col(10);
+        @include make-col-offset(1);
+        margin-bottom: 0;
+      }
+
+      @include media(">=desktop") {
+        @include make-col(8);
+        @include make-col-offset(2);
+        margin-bottom: 0;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        display: none;
+        width: 1px;
+        height: 100%;
+        z-index: -1;
+        top: 0;
+        left: 0;
+
+        background: $black;
+
+        @include media(">=tablet") {
+          & {
+            display: block;
+          }
+        }
+      }
+
+      &.line-dashed {
+        &:after {
+          background: repeating-linear-gradient(0deg, #979797, #979797 5px, #fff 5px, #fff 10px);
+        }
+      }
+
+      &:last-child:after {
+        display: none;
+      }
+    }
+
+    .Timeline__step-number {
+      transform: translateX(-50%);
+    }
+
+    .Timeline__step-description {
+      position: initial;
+      padding: 15px 0 0 0!important;
+    }
+
+    .Timeline__step-details {
+      @include media(">=desktop") {
+        @include make-col(10);
+      }
+    }
+
+    .Timeline__link {
+      margin-top: 10px;
+      text-align: left;
+
+      .Btn {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.half-step {
+  position: relative;
+
+  @include media(">=tablet") {
+    &:before {
+      content: '';
+      display: none;
+      position: absolute;
+      width: 2.0833333vw;
+      height: 1px;
+      background: black;
+      left: 0;
+      top: 50%;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 50%;
+      left: -14px;
+      background: $black;
+      border-radius: 100%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @include media(">=992px") {
+    &:before,
+    &:after {
+      display: block;
+      left: calc(-14px - #{$_Timeline_step-icon-size});
+    }
+  }
+
+  &--reverse {
+
+    &:after {
+      background: white;
+      border: 1px solid black;
+    }
+  }
+}

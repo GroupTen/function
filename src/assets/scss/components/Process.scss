@@ -1,0 +1,147 @@
+.Process {
+  position: relative;
+  padding: $module-offset 0;
+
+  %leftSide {
+    @include media(">=tablet") {
+      position: relative;
+      max-width: 40%;
+      padding-right: 5%;
+    }
+  }
+
+  &__full-step {
+    margin-top: 1.5rem;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__steps {
+    display: flex;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: top left;
+
+    @include media(">=tablet") {
+      position: absolute;
+      top: -120px;
+      right: 0;
+      max-width: 50%;
+    }
+  }
+
+  &__step-title {
+  }
+
+  &__step-contents {
+    @extend %leftSide;
+  }
+
+  &__step-contents {
+    min-height: 200px;
+
+    &:only-child {
+      @include media(">=tablet") {
+        @include make-col(8);
+        @include make-col-offset(2);
+        padding: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__step-content {
+    font-size: 16px;
+  }
+
+  &__link {
+    margin: 0 auto;
+  }
+
+  .TitleBlock {
+    padding-bottom: 20px;
+
+    &__title {
+      font-size: 36px;
+    }
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .nav {
+    @include make-col(5);
+  }
+
+  .nav-tabs {
+    @include media("<tablet") {
+      padding: 1.5rem;
+    }
+  }
+
+
+  .nav-item:not(:last-child) {
+    flex: 1;
+  }
+
+  .nav-item {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      background: $grey-light;
+      height: 1px;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+  }
+
+  .nav-link {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    z-index: 1;
+    padding: 12px 0 0 0!important;
+    background-color: #FBFBFB;
+    border-radius: 100%!important;
+    border: .8px solid $grey-light;
+    font-weight: $weight-bold!important;
+    text-align: center!important;
+
+    &:hover {
+      background-color: $blue;
+      border: none;
+      color: white!important;
+    }
+
+    & > span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    &.active {
+      color: white!important;
+      background-color: $blue;
+      border: none;
+    }
+  }
+
+  .tab-pane > .row {
+    @media (max-width: 767px) {
+      flex-direction: column-reverse;
+    }
+  }
+}

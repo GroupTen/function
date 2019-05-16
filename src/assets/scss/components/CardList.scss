@@ -1,0 +1,307 @@
+.CardList {
+  @extend .module-offset;
+
+  @include flex(column, flex-start, center);
+
+  &__list {
+    @extend .mobile-side-pad;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      @include media("<tablet") {
+        margin-bottom: $mobile-module-offset;
+      }
+    }
+
+    @include media(">=tablet") {
+      margin-bottom: $module-offset / 4;
+    }
+  }
+
+  &__title {
+    width: 100%;
+  }
+
+  &__link {
+    @include media("<tablet") {
+      margin-top: 15px;
+    }
+  }
+
+  &--collapsed {
+    li:nth-child(n+4) {
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+
+  &--4-up,
+  &--3-up,
+  &--2-up {
+
+    .Card {
+      height: 100%;
+    }
+  }
+
+  &--4-up {
+    .CardList__item {
+
+      @include media("<tablet") {
+        @include make-col(6);
+      }
+
+      @include media(">=tablet") {
+        @include make-col(6);
+      }
+
+      padding: 0 15px;
+
+      .Card__image img {
+        width: 100%;
+      }
+      
+      @include media(">=desktop") {
+        @include make-col(3);
+      }
+    }
+  }
+
+  &--3-up {
+    .CardList__item {
+      @include media(">=tablet") {
+        @include make-col(4);
+        padding: 0 15px;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  &--2-up {
+    .CardList__item {
+      @include media(">=tablet") {
+        max-width: 50%;
+        flex: 0 0 49%;
+        justify-content: space-between;
+      }
+
+      &:nth-child(2n+1) {
+        @include media(">=tablet") {
+          margin-right: 1vw;
+        }
+      }
+    }
+  }
+
+  &--1-up {
+    @extend .CardList--full;
+
+    .Card {
+      @extend .Card--list;
+    }
+  }
+
+  &--feature {
+    &:not(.CardList--feature-list) {
+      %largeFeatureCard {
+        width: 100%;
+        margin-bottom: 3.5vw;
+
+        .Card {
+          position: relative;
+          @extend .Card--no-hover;
+        }
+
+        .Card__image {
+          position: relative;
+
+          &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            border-radius: 6px;
+            border: 1px solid #D8D8D8;
+          }
+
+          img {
+            width: 100%;
+            object-fit: cover;
+            max-height: 450px;
+            border-radius: 6px;
+          }
+        }
+
+        .Card__metadata {
+          color: #fff;
+          font-size: 1em;
+        }
+
+        .Card__details {
+          @include flex(column, center, center);
+          position: absolute;
+          width: 100%;
+          top: 0;
+        }
+
+        .Card__contents {
+          flex: 0;
+        }
+
+        .Card__title {
+          max-width: 70%;
+          color: #fff;
+          font-size: 1.5rem;
+          line-height: 1.5rem;
+          text-align: center;
+          margin: 0 auto;
+          font-family: "moderno-fb", "museo-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+          @include media('>tablet') {
+            font-size: 3rem;
+          line-height: 3rem;
+        }
+
+        }
+
+        .Card__caption {
+          max-width: 60%;
+          color: #fff;
+          font-size: 1rem;
+          text-align: center;
+          margin: .5rem auto;
+          opacity: 1;
+          line-height: 1.4rem;
+        }
+
+        .Card__date {
+          max-width: 80%;
+          font-size: 14px;
+          color: #fff;
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .Card__tags {
+          justify-content: center;
+        }
+
+        .Card__tag {
+          background: rgba($grey-dark, 0.667);
+          font-size: 0.7rem;
+
+          &:hover {
+            background: rgba($black, 0.75);
+          }
+        }
+      }
+
+      %divideFeatureCards {
+        @include media('>tablet') {
+          width: 50%;
+        }
+
+        .Card:not(.Card--list) {
+          @extend .Card--bordered;
+          height: 100%;
+        }
+      }
+    }
+
+    // featured cards in grid view
+    .CardList__list {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-bottom: 0;
+      padding: 0;
+      list-style: none;
+
+      & > li {
+        // 3 featured cards (target if first li is also 3rd from end)
+        &:first-child:nth-last-child(3) {
+          @extend %largeFeatureCard;
+
+          & + li {
+            @extend %divideFeatureCards;
+
+            @include media(">tablet") {
+              padding-right: 12px;
+            }
+          }
+
+          &:first-child + li + li {
+            @extend %divideFeatureCards;
+            @include media(">tablet") {
+              padding-left: 12px;
+            }
+          }
+        }
+
+        // 2 featured cards
+        &:first-child:nth-last-child(2) {
+          &, & + li {
+            @extend %divideFeatureCards;
+          }
+
+          @include media(">tablet") {
+            & {
+              padding-right: 12px;
+            }
+
+            &:first-child + li {
+              padding-left: 12px;
+            }
+          }
+        }
+
+        // 1 featured card
+        &:first-child:last-child {
+          @extend %largeFeatureCard;
+        }
+      }
+    }
+
+    .CardList__item {
+      margin-bottom: 0;
+    }
+
+    // featured cards in list view
+    &.CardList--feature-list {
+      .CardList__list > li:first-child:nth-last-child(3) + li, 
+      .CardList__list > li:first-child:nth-last-child(3):first-child + li + li, 
+      .CardList__list > li:first-child:nth-last-child(2), 
+      .CardList__list > li:first-child:nth-last-child(2) + li,
+      .CardList__item {
+        width: 100%;
+        margin-bottom: 1vw;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  &--full {
+    @include media(">=desktop") {
+      padding: 0 12.5%
+    }
+    
+    .CardList__item {
+      width: 100%;
+    }
+  }
+}
+
+.CardList .CardList--feature  {
+  padding: 0 !important;
+}

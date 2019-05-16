@@ -1,0 +1,340 @@
+.ResourceHub {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  // background: $cream;
+
+  &__no-results {
+    padding-top: $module-offset;
+    text-align: center;
+  }
+
+  &__featured {
+    margin-top: 15px;
+  }
+
+  &__loading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: $blue5;
+  }
+
+  &__refine {
+    @include media("<desktop-sm") {
+      position: fixed;
+      width: 250px;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+
+    @include media(">=desktop-sm") {
+      position: relative;
+      @include make-col(2);
+    }
+
+    & + .ResourceHub__results .ResourceHub__featured,
+    & + .ResourceHub__results > .CardList {
+      padding: 0 20px !important;
+    }
+
+    & + .ResourceHub__results > .CardList {
+      & > .container {
+        @include media(">=tablet") {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  // when filters are hidden
+  &__refine--hidden {
+    position: relative;
+    width: 0;
+    flex: 0;
+
+    .Refine__search {
+      width: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    & ~ .ResourceHub__results {
+      flex: 1;
+      max-width: 100%;
+      margin-left: 0;
+
+      .Refine__filter-label:first-child {
+        @include media("<desktop-sm") {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  &__toggle-refine {
+    position: absolute;
+    display: block;
+    top: 20px;
+    right: 0;
+    padding: 5px 10px;
+    color: $cream;
+    background: $blue10;
+    border-top-color: $blue10;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    transform: translateX(100%);
+
+    &:hover {
+      cursor: pointer;
+      background: $blue20;
+    }
+  }
+
+  &__results {
+    width: 100%;
+
+    .CardList__list {
+      width: 100%;
+      margin: 0;
+      padding-top: 0;
+    }
+  }
+
+  &__result-display {
+    @include flex(column, center, center);
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: $blue5;
+    border-bottom: 2px solid $refine-border-color;
+
+    .Refine__filter-label:first-child {
+      @include media("<desktop-sm") {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        top: 140px;
+        left: 250px;
+        z-index: 9999;
+        padding-left: 0;
+        background: white;
+        border: 1px solid $refine-border-color;
+        border-left: none;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        .simple-svg-wrapper {
+          margin-left: 0;
+          color: $blue;
+        }
+
+        span,
+        .custom-control-label,
+        .custom-checkbox {
+          display: none;
+        }
+      }
+
+      @include media(">=desktop-sm") {
+        .simple-svg-wrapper {
+          display: none;
+        }        
+      }
+    }
+
+
+
+    .custom-checkbox,
+    .custom-select {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+
+    .custom-checkbox {
+      padding-left: 0;
+
+      input {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+
+        &:checked + label {
+          background: darken($refine-border-color, 10%);
+          border-color: darken($refine-border-color, 10%);
+        }
+
+        &:checked + label:after {
+          left: calc(100% - 3px);
+          transform: translateX(-100%);
+        }
+      }
+
+      label {
+        position: relative;
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 40px;
+        height: 20px;
+        background: $blue5;
+        display: block;
+        border-radius: 100px;
+        border: 1px solid $refine-border-color;
+
+        &:before {
+          content: 'Filters';
+          background: none!important;
+          border: none!important;
+          color: $black;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 14px;
+          height: 14px;
+          background: $blue;
+          background-image: none!important;
+          color: $blue;
+          border-radius: 100%;
+          transition: 0.3s;
+        }
+
+        &:active:after {
+          width: 10px;
+        }
+      }
+    }
+
+    .custom-select {
+      width: auto;
+      height: 30px;
+      font-size: 12px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      padding-top: 0;
+      padding-right: 0;
+
+      a {
+        margin-top: -4px;
+      }
+    }
+
+
+    a {
+      &:hover {
+        cursor: pointer;
+      }
+
+      .simple-svg-wrapper {
+        color: darken($refine-border-color, 10%);
+      }
+
+      &.active {
+        .simple-svg-wrapper {
+          color: $blue;
+        }
+      }
+    }
+
+    .simple-svg-wrapper {
+      margin-left: 10px;
+    }
+  }
+
+  &__refined-list {
+    margin: 0;
+    border-top: 1px solid $refine-border-color;
+
+    @include media(">=desktop") {
+      flex-wrap: nowrap;
+    }
+
+    @include media("<tablet") {
+      flex-direction: row-reverse;
+      @include make-col(12);
+      width: 100%;
+    }
+  }
+
+  &__loading-spinner {
+    $_spinner-size: 80px;
+    position: absolute;
+    width: $_spinner-size;
+    height: $_spinner-size;
+    margin: $_spinner-size * -0.5 0 0 $_spinner-size * -0.5;
+    top: 50vh;
+    left: 50vw;
+    background-color: $blue;
+    transform: translateX(-50%);
+
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 2.0s infinite ease-in-out;
+    animation: sk-scaleout 2.0s infinite ease-in-out;
+  }
+
+  &__pagination {
+    &.hide {
+      display: none;
+    }
+  }
+
+  &.list .ResourceHub__results {
+    & > .ResourceHub__featured,
+    & > .CardList {
+      padding: 0;
+
+      @include media(">=tablet") {
+        padding: 0 18.75%;
+      }
+    }
+
+    & > .CardList > .container {
+      padding: 0;
+    }
+
+    & > .CardList > .container > .row {
+      margin: 0;
+    }
+  }
+  @keyframes sk-scaleout {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1.0);
+      opacity: 0;
+    }
+  }
+
+  .hero {
+    margin-bottom: 0;
+  }
+
+  .page-item {
+    .page-link {
+      color: $blue;
+    }
+    &.active {
+
+      .page-link {
+        color: white;
+        background-color: $blue;
+        border-color: $blue;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  body {
+    .ASpot {
+      .slidr-slide.is-active.is-current {
+        width: 100%!important;
+      }
+    }
+
+    .loader {
+      display: none!important;
+    }
+  }
+}

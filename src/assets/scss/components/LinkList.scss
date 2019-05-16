@@ -1,0 +1,129 @@
+.LinkList {
+  padding: $module-offset 0;
+  
+  &__title {
+    color: $blue;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    @include make-col(4, 12);
+    @include flex(column, center, center);
+    width: 100%;
+    min-height: 90px;
+    margin-bottom: 1.5rem;
+  }
+
+
+  &__item .Btn:not(.Btn--inline-link) {
+    width: 90%;
+    height: 100%;
+    padding: 20px;
+    justify-content: flex-start;
+    background: $white;
+
+    &__icon {
+      margin-right: 10px;
+      width: 100px;
+
+      @include media(">=desktop-sm") {
+        margin-right: 30px !important;
+      }
+  
+      img {
+        width: auto;
+        max-height: 100%;
+        border-radius: 50%!important;
+
+        @include media(">=desktop-sm") {
+          max-width: 70px !important;
+        }
+      }
+    }
+
+
+    &__label {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    &__caption {
+      opacity: .6;
+      font-weight: 300;
+    }
+  }
+  
+
+  &image {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    overflow: hidden;
+    
+
+    img {
+      width: auto;
+      max-height: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  &__item-caption {
+    margin-bottom: 0;
+  }
+
+  &--1-up {
+    .LinkList__item {
+      @include media(">=desktop-sm") {
+        @include make-col(12);
+      }
+      @include media("<desktop-sm") {
+        @include make-col(12);
+      }
+    }
+  }
+
+  &--2-up {
+    .LinkList__item {
+      @include media(">=desktop-sm") {
+        @include make-col(6);
+      }
+      @include media("<desktop-sm") {
+        @include make-col(12);
+      }
+    }
+  }
+  &--3-up {
+    .LinkList__item {
+      @include media(">=desktop-sm") {
+        @include make-col(4);
+      }
+      @include media("<desktop-sm") {
+        @include make-col(12);
+      }
+    }
+  }
+
+  &--4-up {
+    .LinkList__item {
+      min-height: initial;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+
+      @include media(">=desktop-sm") {
+        @include make-col(3);
+      }
+      @include media("<desktop-sm") {
+        @include make-col(6);
+      }
+    }
+  }
+}

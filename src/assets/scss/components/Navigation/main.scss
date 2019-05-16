@@ -1,0 +1,277 @@
+@import "./NavItem.scss";
+@import "./JoinedNavItems.scss";
+
+$_nav-pad: 10px 0;
+
+%mobile-nav {
+  @include media("<desktop") {
+    position: absolute;
+    z-index: 5;
+    flex-direction: column;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: auto;
+    align-items: flex-start;
+    justify-content: center;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: calc(100vw - 20px);
+      height: 100%;
+      background: $white;
+      border: 1px solid $grey-light;
+      border-radius: 6px;
+      box-shadow: 1px 4px 10px rgba($black, 0.5);
+      z-index: -1;
+    }
+
+    .flex {
+      flex: 0;
+    }
+
+    .nav-item:last-child {
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      // margin-right: -20px;
+      margin-bottom: -20px;
+      background: $grey-ghost;
+
+      a {
+        justify-content: flex-start;
+        padding: 20px;
+        border: none;
+
+        &:after {
+          content: '→';
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+.Navigation {
+  display: flex;
+  position: relative;
+  width: 100%;
+  z-index: 99999;
+  padding: $_nav-pad;
+
+
+  &__logo-link {
+    z-index: 99;
+    @include media("<tablet") {
+      margin-left: 20px;
+    }
+  }
+
+
+  &__logo {
+    margin-right: 20px;
+    width: 100px;
+
+    &:last-child:not(:only-child) {
+      display: none;
+    }
+  }
+
+  &__burger {
+    position: relative;
+    display: none;
+    width: 60px;
+    height: 45px;
+    z-index: 99;
+    margin-right: 10px;
+    transform: scale(0.5);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 9px;
+      width: 100%;
+      background: $grey-dark;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0px;
+        width: 40px;
+      }
+
+      &:nth-child(2) {
+        top: 18px;
+      }
+
+      &:nth-child(3) {
+        top: 36px;
+        left: 20px;
+        width: 40px;
+      }
+    }
+
+    .Navigation.mobile-open & span {
+      &:nth-child(1) {
+        top: 18px;
+        width: 100%;
+        transform: rotate(135deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+      }
+
+      &:nth-child(3) {
+        top: 18px;
+        width: 100%;
+        left: 0;
+        transform: rotate(-135deg);
+      }
+    }
+
+    @include media("<desktop") {
+      display: block;
+    }
+  }
+
+  & > .container > .row {
+    @include media(">tablet") {
+      align-items: center;
+    }
+  }
+
+  &--absolute {
+    position: absolute;
+  }
+
+  &--mainnav {
+    background: $blue5;
+
+    .Navigation__logo-link {
+      @include media("<=tablet") {
+        max-width: 50%;
+      }
+    }
+
+    & > .container > .row {
+      @include media("<=tablet") {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &--subnav {
+    @include media("<=tablet") {
+      display: none;
+    }
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    padding: 0;
+    z-index: 2;
+    background: $blue10;
+    border-bottom: none;
+    box-shadow: 0 1px 1px rgba($grey-mid, 0.25);
+    transition: transform 0.2s ease-in;
+
+    .Navigation__burger {
+      display: none;
+    }
+
+    .Navigation__logo {
+      width: 150px;
+      margin-right: 0;
+    }
+
+    & > .container > .row {
+      @include media("<desktop") {
+        flex-wrap: nowrap;
+      }
+    }
+
+    .row {
+      justify-content: center;
+    }
+
+    .nav-item:not(.dropdown) {
+      display: flex;
+    }
+
+    .nav {
+      flex-wrap: nowrap;
+      
+      @include media("<desktop") {
+        flex-wrap: nowrap;
+        overflow: scroll;
+      }
+      @include media(">=desktop") {
+        justify-content: flex-end;
+        flex-shrink: 0;
+      }
+
+      li {
+        flex-shrink: 0;
+      }
+    }
+
+    .nav-item a {
+      color: $grey-dark;
+      font-size: 0.8rem;
+      font-weight: $weight-light;
+    }
+
+    a>.back-to-top {
+    display: inline; 
+    font-size: 0.8rem; 
+    font-weight: 300;
+  }
+  }
+
+  &.mobile-closed:not(&--subnav) {
+    .nav {
+      @include media("<desktop") {
+        display: none;
+      }
+    }
+  }
+
+  &.mobile-open {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    padding: 0;
+
+    & > .container > .row {
+      padding: $_nav-pad;
+      background: white;
+    }
+
+    .nav {
+      margin-top: 10px;
+      padding: 70px 20px 20px;
+    }
+
+
+    & + main {
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+    }
+  }
+
+  &:not(&--subnav) .nav {
+    @extend %mobile-nav;
+    flex-grow: 1;    
+  }
+}

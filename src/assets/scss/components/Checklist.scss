@@ -1,0 +1,64 @@
+.Checklist {
+  padding: 5% 0;
+
+  &__title {
+    width: 100%;
+    padding-bottom: 2rem;
+    font-size: 2.25rem;
+    text-align: center;
+  }
+
+  &__image {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__items {
+    @include make-col(10, 12);
+    @include make-col-offset(1, 12);
+    display: flex;
+  }
+
+  &__item-left {
+    @include media(">=tablet") {
+      @include make-col(6, 12);
+    }
+  }
+
+  &__item-right {
+    @include media(">=tablet") {
+      @include make-col-offset(1, 12);
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    ul li {
+      position: relative;
+      margin-left: 10px;
+      margin-bottom: 20px;
+      padding-left: 25px;
+
+      &:before {
+        content: url('https://elated-knuth-0fc5a5.netlify.com/svg/icon/check-line.svg');
+        position: absolute;
+        width: 23px;
+        height: 20px;
+        top: 50%;
+        left: -10px;
+        color: #72C472;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__link {
+    padding-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
+}

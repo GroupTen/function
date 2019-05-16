@@ -1,0 +1,97 @@
+.Tabs {
+  padding: $module-offset 0;
+
+  &__title {
+    @include make-col(10);
+    @include make-col-offset(1);
+  }
+
+  &__items {
+      @include make-col(10);
+      @include make-col-offset(1);
+
+    @include media(">=desktop") {
+      @include make-col(10);
+      @include make-col-offset(1);
+    }
+    .card {
+      border: 0px;
+    }
+
+     .col-auto {
+      @include media("<tablet") {
+      width: 100%;
+      margin-bottom: 5px;
+      }
+    }
+  }
+
+  &__item-content {
+
+    @include media("<tablet") {
+      padding: 15px;
+    }
+
+    padding: 40px 40px 20px;
+    background: $white;
+    margin-top: 15px;
+    border-radius: 6px;
+    border: 1px solid #D8D8D8;
+    
+    img {
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .RichText {
+      padding: 0;
+    }
+  }
+
+  &--vertical {
+
+    .Tabs__item-icon {
+      margin-right: 8px;
+      width: 18px;
+    }
+
+    .Tabs__item-content {
+      margin-top: 0;
+    }
+
+    .nav-link {
+      @include flex(row, flex-start, center);
+      width: 100%;
+    }
+  }
+
+  .nav-tabs {
+    border: none;
+
+    @include media("<tablet") {
+    flex-direction: column!important;
+    }
+  }
+  
+  .nav-item {
+    flex: 1;
+    text-align: center;
+
+    .nav-link {
+      border: none;
+
+      @include media("<tablet") {
+        text-align: left;
+
+      }
+
+
+      &.active {
+        width: 100%;
+        border-radius: 3px;
+        background: $white;
+        border: 1px solid #D8D8D8;
+      }
+    }
+  }
+}
