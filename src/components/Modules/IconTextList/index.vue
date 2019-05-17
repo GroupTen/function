@@ -1,9 +1,10 @@
 <template>
-  <div :class="BEM_B">
+  <div :class="BEM_B" v-bind:style="{ 
+      backgroundImage: blok.image ? 'url(' + prepImg(blok.image, '1200x600/smart') + ')' : 'none',
+      backgroundSize: blok.image ? 'cover' : 'initial' }">
     <div class="container">
       <div class="row">
         <div :class="BEM_E('cols')">
-          <img v-if="blok.image" :src="blok.image" :alt="blok.image">
           <TitleBlock :blok="blok" />
 
           <ul :class="BEM_E('items')" v-if="blok.items">
