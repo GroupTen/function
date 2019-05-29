@@ -7,12 +7,12 @@
 
 h1, h2, h3, h4, h5, h6, p, ul, ol {
   @include font-smoothing();
-  font-family: $font-family-sans-serif;
+  font-family: $font-family-body;
   color: $grey-dark;
 }
 
 h1 {
-  font-family: $font-family-serif;
+  font-family: $font-family-headline;
   font-size: 2rem;
   font-weight: $weight-bold;
   line-height: 0.9667;
@@ -25,7 +25,7 @@ h1 {
 
 h2 {
   margin-bottom: 1.5rem;
-  font-family: $font-family-sans-serif;
+  font-family: $font-family-headline;
   font-size: 1.75rem;
   font-weight: $weight-black;
   line-height: 1;
@@ -61,10 +61,10 @@ li {
 }
 
 a {
-  color: darken($v2-blue, 20%);
+  color: darken($primary, 20%);
 
   &:hover {
-    color: darken($v2-blue, 40%);
+    color: darken($primary, 40%);
   }
 }
 
@@ -129,6 +129,10 @@ $listItemIconList: check, globe;
       fill: $value!important;
     }
   }
+
+  // @each $key2, $value2 in $colorMap {
+  // .gradient-#{$color1}-#{$color2}-#{$direction} {}
+  // }
 
   .bg-skew-#{$key} {
     position: relative;

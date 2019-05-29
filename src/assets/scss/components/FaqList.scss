@@ -36,7 +36,7 @@
     }
 
     &[aria-expanded="true"] {
-      background: $blue5;
+      background: $blue;
       svg {
         transform: rotate(180deg);
       }

@@ -1,12 +1,12 @@
 %shownDropdown {
-  $_dropdown-bg: $blue5;
-  $_dropdown-border: 1px solid rgba($blue80, 0.125);
+  $_dropdown-bg: $blue;
+  $_dropdown-border: 1px solid rgba($blue, 0.125);
   display: flex;
   flex-wrap: wrap;
   padding: 1rem 0;
   background: $_dropdown-bg;
   border: $_dropdown-border;
-  box-shadow: 0 1px 10px rgba($blue50, 0.125);
+  box-shadow: 0 1px 10px rgba($blue, 0.125);
 
   &:after {
     content: '';
@@ -23,7 +23,7 @@
   }
 
   .dropdown-item {
-    color: $blue80;
+    color: $blue;
     &.subnav-head {
       flex: 1;
       flex-basis: 100%;
@@ -37,7 +37,7 @@
       }
 
       &:not(:first-child) {
-        border-top: 1px solid rgba($blue80, 0.25);
+        border-top: 1px solid rgba($blue, 0.25);
       }
 
       .subnav-head__wrapper {
@@ -54,13 +54,13 @@
     }
 
     &:hover {
-      color: $blue50;
+      color: $blue;
       background: none;
       text-decoration: underline;
     }
 
     &.active {
-      color: $blue50;
+      color: $blue;
       background: none;
 
       &:hover {

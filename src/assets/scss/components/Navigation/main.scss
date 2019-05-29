@@ -154,7 +154,7 @@ $_nav-pad: 10px 0;
   }
 
   &--mainnav {
-    background: $blue5;
+    background: $blue;
 
     .Navigation__logo-link {
       @include media("<=tablet") {
@@ -181,7 +181,7 @@ $_nav-pad: 10px 0;
     opacity: 0;
     padding: 0;
     z-index: 2;
-    background: $blue10;
+    background: $blue;
     border-bottom: none;
     box-shadow: 0 1px 1px rgba($grey-mid, 0.25);
     transition: transform 0.2s ease-in;

@@ -63,16 +63,7 @@
         content: this.story.content.ogDescription || 'Buildings and communities that help people thrive' },
         { name: 'og:image',
         content: this.story.content.ogImage || 'https://img2.storyblok.com/600x300/smart/f/52232/1000x500/6ac340f2f1/ricks.png' }
-        ],
-        script: [
-        { src: process.env.baseUrl + '/js/privyscript.js',
-        type: 'text/javascript',
-        async: true
-      }
-    //   { src: process.env.baseUrl + '/js/swifttype.js',
-    //   type: 'text/javascript'
-    // }
-    ]
+        ]
   }
 },
 mounted () {

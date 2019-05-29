@@ -30,7 +30,7 @@ $refine-border-color: #d8e9e9;
   left: 0;
   z-index: 99;
   padding: 10px 0;
-  background: $blue5;
+  background: $blue;
   border-right: 2px solid $refine-border-color;
 
   &__toggle {
@@ -39,7 +39,7 @@ $refine-border-color: #d8e9e9;
     height: 20px;
     top: 20px;
     right: -20px;
-    color: $cream;
+    color: $white;
     background: $refine-border-color;
   }
 
@@ -117,7 +117,7 @@ $refine-border-color: #d8e9e9;
 
     &:hover {
       cursor: pointer;
-      background: darken($blue5, 5%);
+      background: darken($blue, 5%);
     }
 
     &:before,

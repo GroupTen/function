@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  // background: $cream;
+  // background: $white;
 
   &__no-results {
     padding-top: $module-offset;
@@ -20,7 +20,7 @@
     top: 0;
     left: 0;
     z-index: 999;
-    background: $blue5;
+    background: $blue;
   }
 
   &__refine {
@@ -83,16 +83,16 @@
     top: 20px;
     right: 0;
     padding: 5px 10px;
-    color: $cream;
-    background: $blue10;
-    border-top-color: $blue10;
+    color: $white;
+    background: $blue;
+    border-top-color: $blue;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     transform: translateX(100%);
 
     &:hover {
       cursor: pointer;
-      background: $blue20;
+      background: $blue;
     }
   }
 
@@ -111,7 +111,7 @@
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
-    background: $blue5;
+    background: $blue;
     border-bottom: 2px solid $refine-border-color;
 
     .Refine__filter-label:first-child {
@@ -184,7 +184,7 @@
         text-indent: -9999px;
         width: 40px;
         height: 20px;
-        background: $blue5;
+        background: $blue;
         display: block;
         border-radius: 100px;
         border: 1px solid $refine-border-color;

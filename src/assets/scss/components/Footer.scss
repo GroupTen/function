@@ -3,11 +3,11 @@
   z-index: 1;
   padding: 0 0 $module-offset;
   color: white;
-  background: $blue80;
+  background: $grey-dark;
 
   &__stats {
     padding: 40px 0 20px;
-    background: $blue70;
+    background: $grey-mid;
 
     @extend .mobile-side-pad;
     
