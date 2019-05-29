@@ -6,7 +6,7 @@ $_overlap-amount: 4vw;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 650px;
+  min-height: 768px;
 
   & > div:not(.ASpot__video) {
     z-index: 1;
@@ -127,7 +127,7 @@ $_overlap-amount: 4vw;
     $_boxed-offset: 3vw;
 
     flex-direction: column;
-    min-height: 500px;
+    min-height: 768px;
 
     &.boxed {
       margin-bottom: 0;
@@ -166,6 +166,9 @@ $_overlap-amount: 4vw;
           height: 100%;
           left: 50%;
           transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
       }
 
@@ -176,14 +179,12 @@ $_overlap-amount: 4vw;
             width: 70%;
             margin: 15% auto;
             position: relative;
-            bottom: 0;
             padding: $_boxed-offset;
+
         }
 
         @include media(">desktop") {
-          bottom: -$_boxed-offset;
-          position: absolute;
-          max-width: 31vw;
+          max-width: 42vw;
           margin: 0;
         }
       }
