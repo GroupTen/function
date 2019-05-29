@@ -31,6 +31,7 @@
       color: inherit;
       margin: 0;
       line-height: 1;
+      font-family: $font-family-headline;
       font-size: inherit;
     }
   }
@@ -78,9 +79,9 @@
     color: $white;
 
     &:hover {
-      border: 2px solid $primary;
+      border: 2px solid $secondary;
       color: $white;
-      background: $primary;
+      background: $secondary;
     }
 
     &:active {

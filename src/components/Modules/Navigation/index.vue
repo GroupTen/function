@@ -85,20 +85,11 @@ export default {
       return this.$route.fullPath.split('/')[1]
     },
     homeLink () {
-      let base = process.env.NODE_ENV == 'production' ? this.MAIN_URL : this.BASE_URL
-      let lang = this.$store.state.language !== 'en' ? '/' + this.$store.state.language : ''
-
-      let fullLink = base
-
       if(this.blok && this.blok.variation == 'subnav'){
-        let url = this.blok.homeLink.cached_url
-        fullLink += url.startsWith(lang) ? url : lang + url
-        return fullLink
-      } else {
-        return base + lang + '/'
+        return this.blok.homeLink.cached_url
       }
 
-      return base + lang
+      return '/'
     }
   }
 }
