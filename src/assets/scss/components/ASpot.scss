@@ -6,7 +6,7 @@ $_overlap-amount: 4vw;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 768px;
+  min-height: 720px;
 
   & > div:not(.ASpot__video) {
     z-index: 1;
@@ -127,7 +127,7 @@ $_overlap-amount: 4vw;
     $_boxed-offset: 3vw;
 
     flex-direction: column;
-    min-height: 768px;
+    min-height: 720px;
 
     &.boxed {
       margin-bottom: 0;
@@ -184,7 +184,7 @@ $_overlap-amount: 4vw;
         }
 
         @include media(">desktop") {
-          max-width: 42vw;
+          max-width: 40vw;
           margin: 0;
         }
       }
