@@ -104,5 +104,25 @@ $lists: 'LogoList', 'MemberList';
         }
       }
     }
+
+    &--5-up {
+      .#{$type}__item {
+        .#{$type}__image img {
+          @include media(">=tablet") {
+            width: 100px;
+          }
+        }
+        
+        @include media(">=desktop") {
+          @include make-col(2);          
+        }
+        
+        a {
+          @include media(">=tablet") {
+            min-height: 160px;
+          }
+        }
+      }
+    }
   }
 }
