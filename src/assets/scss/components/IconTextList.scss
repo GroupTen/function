@@ -88,7 +88,7 @@ $lists: 'IconTextList', 'IconTextListCollapse';
       display: flex;
       flex-wrap: wrap;
     }
-    @for $i from 1 through 4 {
+    @for $i from 1 through 5 {
       &--#{$i}-up {
         .#{$type}__item {
           @include media(">=tablet") {
@@ -134,7 +134,8 @@ $lists: 'IconTextList', 'IconTextListCollapse';
     }
 
     &--3-up,
-    &--4-up {
+    &--4-up,
+    &--5-up {
       .#{$type}__item {
 
         @include media(">=tablet") {
@@ -350,9 +351,78 @@ $lists: 'IconTextList', 'IconTextListCollapse';
       }
     }
 
-    h4 {
-      font-weight: $weight-bold;
+    &--5-up-center {
+      @extend .#{$type}--5-up;
+
+      .#{$type}__title {
+        padding-bottom: 5rem;
+      }
+
+      .#{$type}__cols {
+        @include media(">=desktop") {
+          @include make-col(10);
+          @include make-col-offset(1);
+        }
+      }
+
+      .#{$type}__cols {
+        @include media(">=desktop") {
+          @include make-col(12,12);
+          @include make-col-offset(0,12);
+        }
+      }
+
+      .#{$type}__items {
+        @include media(">=desktop") {
+          text-align: center;
+        }
+      }
+
+      .#{$type}__item {
+        @include media("<desktop") {
+          justify-content: flex-start;
+          /* padding-left: 40px; */
+          @include make-col(10);
+          @include make-col-offset(1);
+        }
+
+        @include media(">=desktop") {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      .#{$type}__image {
+        @include make-col(2, 12);
+        justify-content: center;
+        padding-bottom: 0;
+
+        @include media("<desktop") {
+          align-items: baseline;
+        }
+
+        @include media(">=desktop") {
+          padding-bottom: 20px;
+        }
+      }
+
+      .#{$type}__content {
+        @include media("<desktop") {
+          padding-right: 0;
+          padding-left: 10px;
+          text-align: left
+        }
+        @include media(">=desktop") {
+          @include make-col(11, 12);
+        }
+      }
     }
+
+    .#{$type}__content {
+        h4 {
+          font-weight: 700;
+        }
+      }
   }
 }
 
