@@ -28,7 +28,9 @@
 
   &__label {
     p {
+      color: inherit;
       margin: 0;
+      line-height: 1;
     }
   }
 
@@ -40,11 +42,14 @@
   &--primary-sm,
   &--primary-lg {
     @extend .btn-primary;
+    border-radius: 0;
+    border-color: $primary;
+    background: $primary;
+    color: $white;
 
     &:hover {
-      border-color: $primary;
-      color: $primary;
-      background: #E4F2F4;
+      border-color: $secondary;
+      background: $secondary;
     }
   }
 
@@ -66,13 +71,15 @@
 
   &--outline {
     @extend .btn-outline-dark;
+    border-radius: 0;
     font-weight: $weight-bold;
-    border: 2px solid $grey-light;
+    border: 2px solid $white;
+    color: $white;
 
     &:hover {
-      border: 2px solid $grey-dark;
-      color: $grey-dark;
-      background: rgba($grey-dark, 0.1);
+      border: 2px solid $primary;
+      color: $white;
+      background: $primary;
     }
 
     &:active {
@@ -94,11 +101,11 @@
 
 
   &--outline-white {
-
-    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 0;
+    border: 1px solid $white;
+    font-weight: $weight-bold;
 
     &:hover {
-      border: 2px solid rgba(255, 255, 255, 0.6);
       color: $white;
       background: rgba($white, 0.2);
     }

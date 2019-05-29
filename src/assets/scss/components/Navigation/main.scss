@@ -155,6 +155,10 @@ $_nav-pad: 10px 0;
   &--mainnav {
     position: absolute;
 
+    &.mobile-open {
+      position: fixed;
+    }
+
     .Navigation__logo-link {
       @include media("<=tablet") {
         max-width: 50%;
@@ -235,7 +239,7 @@ $_nav-pad: 10px 0;
     }
 
     .nav-item a {
-      color: $grey-dark;
+      color: $white;
       font-size: 0.8rem;
       font-weight: $weight-light;
     }
@@ -320,18 +324,6 @@ $_nav-pad: 10px 0;
     }
   }
 
-  &.mobile-open {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    padding: 0;
-
-    .nav {
-      margin-top: 10px;
-      padding: 70px 20px 20px;
-    }
-  }
-
   &:not(&--subnav) .nav {
     @extend %mobile-nav;
     flex-grow: 1;    
@@ -341,10 +333,15 @@ $_nav-pad: 10px 0;
 .JoinedNav {
   position: absolute;
   width: 100%;
+  height: 100vh;
   top: 0;
   left: 0;
-  padding: $module-offset 0 $module-offset * 0.5;
+  padding: $module-offset * 2 0 $module-offset * 0.5;
   background: rgba($black, 0.9);
+
+  .main-nav ul {
+    width: 100%;
+  }
 
   &:after {
     content: '';
@@ -374,19 +371,65 @@ $_nav-pad: 10px 0;
   .nav-link {
     padding: 0;
 
+    .nav-item {
+      .Btn__contents {
+        position: relative;
+      }
+
+      .Btn__contents:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 7px;
+        top: 50%;
+        left: -70px;
+        transform: translateY(-50%);
+        transition: all 0.2s ease-out;
+      }
+
+      &:hover,
+      &.nuxt-link-exact-active {
+        .Btn__contents:after {
+            width: calc(100% + 80px);
+            transition: all 0.2s ease-in;
+          }
+        .Btn__label {
+          opacity: 0.5;
+        }
+      }
+    }
+
     @for $index from 1 through 10 {
-      &:nth-child(#{$index}) .Btn:before {
-        content: '0' + $index;
-        @if $index == 1 {
-          color: #F24766;
-        } @else if $index == 2 {
-          color: #CA4889;
-        } @else if $index == 3 {
-          color: #8348C7;
-        } @else if $index == 4 {
-          color: #5452D2;
-        } @else {
-          color: $white;
+      &:nth-child(#{$index}) {
+        .Btn .Btn__contents:after {
+          @if $index == 1 {
+            background: #F24766;
+          } @else if $index == 2 {
+            background: #CA4889;
+          } @else if $index == 3 {
+            background: #8348C7;
+          } @else if $index == 4 {
+            background: #5452D2;
+          } @else {
+            background: $white;
+          }
+        }
+
+        .Btn:before {
+          min-width: 70px;
+          text-align: left;
+          content: '0' + $index;
+          @if $index == 1 {
+            color: #F24766;
+          } @else if $index == 2 {
+            color: #CA4889;
+          } @else if $index == 3 {
+            color: #8348C7;
+          } @else if $index == 4 {
+            color: #5452D2;
+          } @else {
+            color: $white;
+          }
         }
       }
     }
