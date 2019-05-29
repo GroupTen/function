@@ -1,5 +1,29 @@
 <template>
   <div :class="this.openNav === true ? BEM_B + ' mobile-open' : BEM_B + ' mobile-closed'" style="flex-direction: column;">
+    <header class="JoinedNav" v-if="blok.variation === 'mainnav'">
+      <nav class="main-nav" ref="mainNav" v-if="blok.navItems">
+        <div class="container">
+          <div class="row">
+            <ul>
+              <li
+                v-for="(item, index) in blok.navItems"
+                v-bind:key="index"
+                :class="item.subitems.length > 0 ? 'nav-link has-dropdown ' + item.classes : 'nav-link ' + item.classes"
+                :data-content="'item-' + index">
+                <Btn :blok="item.link[0]" class="nav-item" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <b-nav v-else-if="blok.navItems">
+      <NavItem
+        v-for="(item, index) in blok.navItems"
+        v-bind:key="index"
+        :blok="item"
+        :lang="lang" />
+    </b-nav>
     <div class="container">
       <div class="row">
         <a :class="BEM_E('to-top') + ' Btn Btn--outline-sm tooltip-balloon'"
@@ -17,16 +41,9 @@
             :class="BEM_E('logo')"
             :src="blok.homeImageLight">
         </a>
-        <JoinedNavItems
-          v-if="blok.variation === 'mainnav'" 
-          :items="blok.navItems" />
-        <b-nav v-else-if="blok.navItems">
-          <NavItem
-            v-for="(item, index) in blok.navItems"
-            v-bind:key="index"
-            :blok="item"
-            :lang="lang" />
-        </b-nav>
+        <a class="nav-trigger" @click="toggleNav">
+          <span /><span /><span />
+        </a>
       </div>
     </div>
   </div>
@@ -34,12 +51,11 @@
 
 <script>
 import BaseComponent from '~/src/components/Templates/BaseComponent'
-import JoinedNavItems from './JoinedNavItems'
 import NavItem from './NavItem'
 
 export default {
   extends: BaseComponent,
-  components: { JoinedNavItems, NavItem },
+  components: { NavItem },
   props: {
     name: {
       type: String,

@@ -33,7 +33,7 @@
     head () {
       return {
         title: this.story.content.metadata ? this.story.content.metadata.title : this.story.title,
-        titleTemplate: '%s | International WELL Building Institute',
+        titleTemplate: '%s | Function',
         meta: [
         { hid: 'description', name: 'description', 
         content: this.story.content.metadata ? this.story.content.metadata.description : '' },

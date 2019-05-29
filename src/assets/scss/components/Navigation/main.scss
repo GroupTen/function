@@ -1,5 +1,4 @@
 @import "./NavItem.scss";
-@import "./JoinedNavItems.scss";
 
 $_nav-pad: 10px 0;
 
@@ -36,7 +35,6 @@ $_nav-pad: 10px 0;
     .nav-item:last-child {
       width: calc(100% + 20px);
       margin-left: -10px;
-      // margin-right: -20px;
       margin-bottom: -20px;
       background: $grey-ghost;
 
@@ -144,6 +142,7 @@ $_nav-pad: 10px 0;
   }
 
   & > .container > .row {
+    justify-content: space-between;
     @include media(">tablet") {
       align-items: center;
     }
@@ -154,11 +153,20 @@ $_nav-pad: 10px 0;
   }
 
   &--mainnav {
-    background: $blue;
+    position: absolute;
 
     .Navigation__logo-link {
       @include media("<=tablet") {
         max-width: 50%;
+      }
+    }
+
+    .Navigation__logo-link {
+      & > img:first-child:not(:only-child) {
+        display: none;
+      }
+      & > img:last-child:not(:only-child) {
+        display: block;
       }
     }
 
@@ -232,18 +240,83 @@ $_nav-pad: 10px 0;
       font-weight: $weight-light;
     }
 
-    a>.back-to-top {
-    display: inline; 
-    font-size: 0.8rem; 
-    font-weight: 300;
+    a >.back-to-top {
+      display: inline; 
+      font-size: 0.8rem; 
+      font-weight: 300;
+    }
   }
+
+  .nav-trigger {
+    height: 60px;
+    width: 60px;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+    transform: scale(0.5);
+    transform-origin: center;
+
+    @include media(">=tablet", "<desktop") {
+      top: -30px;
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      height: 9px;
+      width: 100%;
+      background: $grey-dark;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0px;
+        width: 40px;
+      }
+
+      &:nth-child(2) {
+        top: 18px;
+      }
+
+      &:nth-child(3) {
+        top: 36px;
+        left: 20px;
+        width: 40px;
+      }
+    }
+
+    @include media("<desktop") {
+      display: block;
+    }
+  }
+
+  &.mobile-open .nav-trigger span {
+    background: $white;
+    &:nth-child(1) {
+      top: 18px;
+      width: 100%;
+      transform: rotate(135deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+    }
+
+    &:nth-child(3) {
+      top: 18px;
+      width: 100%;
+      left: 0;
+      transform: rotate(-135deg);
+    }
   }
 
   &.mobile-closed:not(&--subnav) {
-    .nav {
-      @include media("<desktop") {
-        display: none;
-      }
+    .JoinedNav {
+      display: none;
     }
   }
 
@@ -253,25 +326,69 @@ $_nav-pad: 10px 0;
     height: 100vh;
     padding: 0;
 
-    & > .container > .row {
-      padding: $_nav-pad;
-      background: white;
-    }
-
     .nav {
       margin-top: 10px;
       padding: 70px 20px 20px;
-    }
-
-
-    & + main {
-      filter: blur(5px);
-      -webkit-filter: blur(5px);
     }
   }
 
   &:not(&--subnav) .nav {
     @extend %mobile-nav;
     flex-grow: 1;    
+  }
+}
+
+.JoinedNav {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: $module-offset 0 $module-offset * 0.5;
+  background: rgba($black, 0.9);
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-link .Btn {
+    justify-content: flex-start;
+    padding: 0;
+    color: white;
+    font-family: $font-family-headline;
+    text-transform: uppercase;
+    font-weight: $weight-blackout;
+    font-size: 50px;
+
+    &:before {
+      margin-right: 10px;
+    }
+  }
+
+  .nav-link {
+    padding: 0;
+
+    @for $index from 1 through 10 {
+      &:nth-child(#{$index}) .Btn:before {
+        content: '0' + $index;
+        @if $index == 1 {
+          color: #F24766;
+        } @else if $index == 2 {
+          color: #CA4889;
+        } @else if $index == 3 {
+          color: #8348C7;
+        } @else if $index == 4 {
+          color: #5452D2;
+        } @else {
+          color: $white;
+        }
+      }
+    }
   }
 }
