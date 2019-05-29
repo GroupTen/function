@@ -6,7 +6,7 @@
       <img :src="blok.icon[0].imageLocation" :alt="blok.icon[0].imageAlt">
     </span>
     <span v-if="blok.linkLabel || blok.linkCaption" :class="BEM_E('contents')">
-      <span v-if="blok.linkLabel" :class="BEM_E('label')">{{blok.linkLabel}}</span>
+      <span v-if="blok.linkLabel" :class="BEM_E('label')" v-html="markdown(blok.linkLabel)"/>
       <span v-if="blok.linkCaption" :class="BEM_E('caption')">{{blok.linkCaption}}</span>
     </span>
   </b-button>
@@ -22,7 +22,7 @@
       <img :src="blok.icon[0].imageLocation" :alt="blok.icon[0].imageAlt">
     </span>
     <span v-if="blok.linkLabel || blok.linkCaption" :class="BEM_E('contents')">
-      <span v-if="blok.linkLabel" :class="BEM_E('label')">{{blok.linkLabel}}</span>
+      <span v-if="blok.linkLabel" :class="BEM_E('label')" v-html="markdown(blok.linkLabel)"/>
       <span v-if="blok.linkCaption" :class="BEM_E('caption')">{{blok.linkCaption}}</span>
     </span>
   </nuxt-link>
@@ -38,7 +38,7 @@
       <img :src="blok.icon[0].imageLocation" :alt="blok.icon[0].imageAlt">
     </span>
     <span v-if="blok.linkLabel || blok.linkCaption" :class="BEM_E('contents')">
-      <span v-if="blok.linkLabel" :class="BEM_E('label')">{{blok.linkLabel}}</span>
+      <span v-if="blok.linkLabel" :class="BEM_E('label')" v-html="markdown(blok.linkLabel)"/>
       <span v-if="blok.linkCaption" :class="BEM_E('caption')">{{blok.linkCaption}}</span>
     </span>
   </b-button>
@@ -56,7 +56,7 @@
       <img :src="blok.icon[0].imageLocation" :alt="blok.icon[0].imageAlt">
     </span>
     <span v-if="blok.linkLabel || blok.linkCaption" :class="BEM_E('contents')">
-      <span v-if="blok.linkLabel" :class="BEM_E('label')">{{blok.linkLabel}}</span>
+      <span v-if="blok.linkLabel" :class="BEM_E('label')" v-html="markdown(blok.linkLabel)"/>
       <span v-if="blok.linkCaption" :class="BEM_E('caption')">{{blok.linkCaption}}</span>
     </span>
   </b-button>
@@ -68,7 +68,7 @@
       <img :src="icon">
     </span>
     <span v-if="label || caption" :class="BEM_E('contents')">
-      <span v-if="label" :class="BEM_E('label')">{{label}}</span>
+      <span v-if="label" :class="BEM_E('label')" v-html="markdown(blok.linkLabel)"/>
       <span v-if="caption" :class="BEM_E('caption')">{{caption}}</span>
     </span>
   </b-button>
@@ -77,6 +77,7 @@
 <script>
 import BaseComponent from '~/src/components/Templates/BaseComponent'
 import BEM from '~/mixins/bem.js'
+const marked = require('marked')
 
 export default {
   extends: BaseComponent,
@@ -102,6 +103,15 @@ export default {
     },
     BEM_M: function(mod) {
       return BEM.methods.ModCls(this.name, mod)
+    },
+
+    markdown(txt) {
+      marked.setOptions({
+        breaks: true,
+      })
+      if(txt) {
+        return marked(txt)
+      }
     },
 
     // prepend with lang
