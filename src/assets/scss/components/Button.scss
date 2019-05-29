@@ -1,36 +1,40 @@
 .Btn {
-  & {
-    @extend .btn;
-    @include flex(row, center, center);
-    font-size: 0.875rem;
-    letter-spacing: .3px;
+  @extend .btn;
+  @include flex(row, center, center);
+  font-size: 0.875rem;
+  letter-spacing: .3px;
 
-    &__icon {
-      display: block;
-      min-width: 80px;
-      max-width: 80px;
-      padding-right: 15px;
+  &__icon {
+    display: block;
+    min-width: 80px;
+    max-width: 80px;
+    padding-right: 15px;
 
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .rounded-circle img {
-          border-radius: 50%;
-        }
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
-    &__contents {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    .rounded-circle img {
+        border-radius: 50%;
+      }
+  }
+
+  &__contents {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__label {
+    p {
+      margin: 0;
     }
   }
 
-  .Btn__caption {
-      font-weight: $weight-light;
-    }
+  &__caption {
+    font-weight: $weight-light;
+  }
 
   &--primary,
   &--primary-sm,

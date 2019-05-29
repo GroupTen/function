@@ -265,7 +265,7 @@ $_nav-pad: 10px 0;
       position: absolute;
       height: 9px;
       width: 100%;
-      background: $grey-dark;
+      background: $white;
       border-radius: 9px;
       opacity: 1;
       left: 0;
@@ -360,7 +360,7 @@ $_nav-pad: 10px 0;
   .nav-link .Btn {
     justify-content: flex-start;
     padding: 0;
-    color: white;
+    color: $white;
     font-family: $font-family-headline;
     text-transform: uppercase;
     font-weight: $weight-blackout;
