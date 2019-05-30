@@ -24,6 +24,10 @@ $lists: 'LogoList', 'MemberList';
       }
     }
 
+    h6 {
+      font-weight: 300;
+    }
+
     &__item {
       @include make-col(6);
       @include flex(column, center, center);

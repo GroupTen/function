@@ -9,7 +9,7 @@
                 <img :src="item.image" alt="">
               </div>
               <div :class="BEM_E('content')" v-if="item.title">
-                <h4>{{item.title}}</h4>
+                <h6>{{item.title}}</h6>
               </div>
             </li>
           </ul>
