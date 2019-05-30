@@ -13,7 +13,7 @@
                 <img :src="item.image" alt="">
               </div>
               <div :class="BEM_E('content')">
-                <h4 v-if="item.title && item.title.length > 0"><FancyText :blok="item.title" /></h4>
+                <h5 v-if="item.title && item.title.length > 0"><FancyText :blok="item.title" /></h5>
                 <p v-if="item.caption && item.caption.length > 0"><FancyText :blok="item.caption" /></p>
                 <div v-if="item.content" v-html="markdown(item.content)" />
                 <div :class="BEM_E('content-link')">
