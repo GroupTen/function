@@ -2,10 +2,6 @@ const pkg = require('./package')
 const axios = require('axios')
 const blokToken = 'pQ1qRdl9S8X1bwzXDIAg1Qtt'
 
-const resourceTypes = 'page'
-const mainUrl = 'https://www.wellcertified.com'
-const resourceUrl ='https://resources.wellcertified.com'
-
 const config = {
   mode: 'universal',
   /*
@@ -112,7 +108,7 @@ const config = {
         cache_version = space_res.data.space.version
       
         // Call first Page of the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
-        axios.get(`https://api.storyblok.com/v1/cdn/stories?token=${blokToken}&per_page=${per_page}&page=${page}&cv=${cache_version}&filter_query[component][in]=${resourceTypes}`).then((res) => {
+        axios.get(`https://api.storyblok.com/v1/cdn/stories?token=${blokToken}&per_page=${per_page}&page=${page}&cv=${cache_version}`).then((res) => {
           Object.keys(res.data.stories).forEach((key) => {
             if (res.data.stories[key].full_slug !== 'home' && res.data.stories[key].full_slug.startsWith('testing') == false) {
               routes.push('/' + res.data.stories[key].full_slug)
@@ -129,7 +125,7 @@ const config = {
           // Since we know the total we now can pregenerate all requests we need to get all Links
           let contentRequests = [] 
           for (let page = 2; page <= maxPage; page++) {
-            contentRequests.push(axios.get(`https://api.storyblok.com/v1/cdn/stories?token=${blokToken}&per_page=${per_page}&page=${page}&filter_query[component][in]=${resourceTypes}`))
+            contentRequests.push(axios.get(`https://api.storyblok.com/v1/cdn/stories?token=${blokToken}&per_page=${per_page}&page=${page}`))
           }
 
           // Axios allows us to execute all requests using axios.spread we will than generate our routes and execute the callback

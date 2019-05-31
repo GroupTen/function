@@ -1,9 +1,7 @@
 <template>
   <div :class="BEM_B + ' container'">
     <div class="row">
-      <TitleBlock
-        v-if="blok && (blok.title || blok.caption)"
-        :blok="blok" />
+      <TitleBlock v-if="blok" :blok="blok" />
       <b-form
         v-if="blok && blok.fields"
         :id="blok.id"
