@@ -9,7 +9,7 @@ $__DEBUG_DRAW__: false;
 
 $midnight: #292828;
 $black: #313131;
-$grey-dark: #515150;
+$grey-dark: #313131;
 $grey-mid: #949494;
 $grey-light: #D8D8D8;
 $grey-ghost: #FAFAFA;
@@ -18,7 +18,18 @@ $blue: #5A5EF8;
 $coral: #E14965;
 $white: #F4F4FF;
 
+
+$blackNue1a: #2A2731;
+$blackNue1b: #252328;
+$blackNue2a: #353537;
+$blackNue2b: #414246;
+$blackNue3a: #393A41;
+$blackNue3b: #4C4C4C;
+
+
 $blueDark: #1F2090;
+$redDark: #E04550;
+
 
 $primary: $blue;
 $secondary: $coral;
@@ -37,6 +48,14 @@ $colorMap: (
   blue: $blue,
   coral: $coral,
   blueDark: $blueDark,
+  blackNue1a: $blackNue1a,
+  blackNue1b: $blackNue1b,
+  blackNue2a: $blackNue2a,
+  blackNue2b: $blackNue2b,
+  blackNue3a: $blackNue3a,
+  blackNue3b: $blackNue3b,
+  redDark: $redDark,
+  midnight: $midnight,
 );
 
 //------------------------------------------------------------------------------
