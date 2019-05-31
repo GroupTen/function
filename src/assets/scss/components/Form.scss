@@ -1,0 +1,17 @@
+.Form {
+
+
+form {
+  width: 100%;
+  padding-bottom: 10%;
+
+  @include make-col(12);   
+
+      @include media(">=tablet") {
+      @include make-col(8);
+      @include make-col-offset(2);
+    }
+}
+}
+
+
