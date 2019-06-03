@@ -19,7 +19,7 @@ $lists: 'LogoList', 'MemberList';
       list-style: none;
 
       @include media(">=tablet") {
-        width: 720px;
+        width: 900px;
         margin: 0 auto;
       }
     }
