@@ -39,15 +39,6 @@ export default {
     }
   },
   methods: {
-    handleScroll (evt, el) {
-      if (el && window.scrollY > 50) {
-        el.setAttribute(
-          'style',
-          'opacity: 1; transform: translate3d(0, -10px, 0)'
-        )
-        return window.scrollY > 100
-      }
-    },
     BEM_E: function(el) {
       return BEM.methods.ElCls(this.name, el)
     },

@@ -2,9 +2,9 @@
   <div>
     <Navigation :blok="$store.state.settings.mainNav[0]"/>
     <div :class="listView ? BEM_B + 'list' : BEM_B + 'grid'">
-      <div v-if="this.posts === null" :class="BEM_E('loading')">
+<!--       <div v-if="this.posts === null" :class="BEM_E('loading')">
         <div :class="BEM_E('loading-spinner')"></div>
-      </div>
+      </div> -->
       <div :class="BEM_E('refined-list') + ' row'">
         <div :class="BEM_E(!showRefine ? 'refine--hidden' : 'refine')">
           <Refine
@@ -18,16 +18,6 @@
           <div :class="BEM_E('result-display')">
             <div class="container">
               <div class="row">
-                <label class="Refine__filter-label">
-                  <Vector name="icon/filter" />
-                  <span>Filters:</span>
-                  <b-form-checkbox
-                    id="filterToggle"
-                    v-model="showRefine"
-                    :value="true">
-                  </b-form-checkbox>
-                </label>
-
                 <label class="Refine__filter-label">
                   Order by:
                   <b-form-select v-model="dataSort">
@@ -54,7 +44,7 @@
             </div>
           </div>
           <div v-if="!appliedFilters && !appliedSearch && featuredPosts && featuredPosts.length > 0" :class="BEM_E('featured')">
-            <cardList 
+            <CardList 
               :items="featuredPosts"
               :cardMods="listView ? ['list'] : null"
               :mods="listView ? ['feature', 'feature-list'] : ['feature']"
@@ -134,7 +124,7 @@ export default {
     fetchFeatured: function () {
       return this.$storyapi.get('cdn/stories/', {
         version: 'published',
-        starts_with: this.$store.state.language !== 'en' ? this.$store.state.language + '/resources/' + this.contentType : 'resources/' + this.contentType,
+        starts_with: this.$store.state.language !== 'en' ? this.$store.state.language + '/' + this.contentType : this.contentType,
         cv: this.$store.state.cacheVersion,
         per_page: 3,
         filter_query: {"featured":{"in": true }}
@@ -151,7 +141,7 @@ export default {
     fetchPosts () {
       return this.$storyapi.get('cdn/stories/', {
         version: 'published',
-        starts_with: this.$store.state.language !== 'en' ? this.$store.state.language + '/resources/' + this.contentType : 'resources/' + this.contentType,
+        starts_with: this.$store.state.language !== 'en' ? this.$store.state.language + '/' + this.contentType : this.contentType,
         cv: this.$store.state.cacheVersion,
         sort_by: this.dataSort,
         search_term: this.dataSearch,

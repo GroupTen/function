@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  // background: $white;
 
   &__no-results {
     padding-top: $module-offset;
@@ -111,7 +110,7 @@
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
-    background: $blue;
+    background: $grey-light;
     border-bottom: 2px solid $refine-border-color;
 
     .Refine__filter-label:first-child {

@@ -1,6 +1,6 @@
 $search-btn-width: 50px;
 $refine-pad: 20px;
-$refine-border-color: #d8e9e9;
+$refine-border-color: darken($grey-light, 5%);
 
 %search-btn {
   display: flex;

@@ -1,0 +1,15 @@
+.Article {
+  &__contents {
+  	background: $white;
+  }
+
+  a {
+      font-weight: 500;
+    }
+
+  &__sidebar-author {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}

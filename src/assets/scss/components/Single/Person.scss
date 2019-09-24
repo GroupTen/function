@@ -1,0 +1,56 @@
+.Person {
+  position: relative;
+
+  &__image {
+    background-image: url("//img2.storyblok.com/1200x500/smart/f/52232/1450x750/2464f072f6/blue.png");
+  }
+
+  &__header {
+    display: flex;
+
+    &-image {
+      margin-right: 20px;
+
+      img {
+        border-radius: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+
+  &__contents {
+    background: $white;
+  }
+
+  &__sidebar {
+    padding: 0 2%;
+  }
+
+  &__job {
+    font-size: 18px;
+  }
+
+  &__organization {
+    &, & > a {
+      color: $grey-mid;
+      font-size: 16px;
+    }
+  }
+
+  &__sidebar-org {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  /*
+  .Main {
+    margin-top: 0;
+  }
+  */
+}

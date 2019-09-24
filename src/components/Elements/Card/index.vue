@@ -141,23 +141,9 @@ export default {
     fancyPath () {
       if(this.path) {
         let path = this.path
-        let matchesDomain = this.checkResourceMatch(path)
 
         // if story + matchesDomain, route story
-        if (matchesDomain) {
-          path = path.replace('zh-cn/zh_cn/resources/', '/zh-cn/').replace('zh-cn/resources/', '/zh-cn/').replace('resources/', '/')
-          return path
-        } else if (!matchesDomain) {
-          let env = process.env.prodUrl
-
-          // if my prod url is resources, link to main,
-          // else link to resources
-          if(env.includes('resources.wellcertified')) {
-            path = process.env.mainUrl + '/' + path
-          } else {
-            path = process.env.resourcesUrl + '/' + path.replace('zh-cn/zh_cn/resources/', 'zh-cn/').replace('zh-cn/resources/', 'zh-cn/').replace('resources/', '')
-          }
-        }
+        path = path.replace('zh-cn/zh_cn/', '/zh-cn/')
 
         return path
       }

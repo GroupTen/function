@@ -1,6 +1,9 @@
 <template>
   <div 
-  :class="story.content.classes ? 'Page ' + story.content.classes : story.full_slug == 'home' ? 'Page coming-soon' : 'Page'"
+  :class="[
+  'Page',
+  story.content.component,
+  story.content.classes ? story.content.classes : null]"
   v-scroll="handleScroll">
     <component 
     v-if="story.content.component" 

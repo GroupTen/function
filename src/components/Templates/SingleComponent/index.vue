@@ -3,7 +3,7 @@
     <Navigation :blok="$store.state.settings.mainNav[0]"/>
     <div :class="BEM_B" v-scroll="handleScroll">
       <div :class="BEM_E('back-link') + ' container'" v-if="back !== false">
-        <nuxt-link :to="'/resources/?type=' + this.name.toLowerCase() + 's'">← All {{this.name}}s</nuxt-link>
+        <nuxt-link :to="'/' + this.name.toLowerCase() + 's'">← All {{this.name}}s</nuxt-link>
       </div>
       <div :class="BEM_E('image')">
         <slot name="image"></slot>

@@ -1,0 +1,243 @@
+@import "~/src/assets/scss/imports/locks.scss";
+
+$_img-overlap: 7.8vw;
+$_single-bg-color: $grey-ghost;
+
+$contentTypes: 'Single', 'Article', 'Person';
+@each $type in $contentTypes {
+  .#{$type} {
+    position: relative;
+    padding-top: 20px;
+    background: $_single-bg-color;
+
+    .Page--isStripped & {
+      padding-top: 0;
+    }
+
+    &__back-link {
+      margin-top: -10px;
+      padding: 0 20px 10px;
+
+      @include media(">=desktop") {
+        padding: 0 0 10px;
+      }
+      
+      a {
+        color: $grey-dark;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: $weight-black;
+      }
+
+      .Page--isStripped & {
+        display: none;
+      }
+    }
+
+    &__image {
+      position: relative;
+      max-width: 1100px;
+      min-height: 20vw;
+      margin: 0 auto;
+      background-color: $midnight;
+      background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2351D6FF' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      border-radius: 6px;
+      overflow: hidden;
+
+      .Page--isStripped &,
+      .Page--isStripped & img {
+        border-radius: 0;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+    }
+
+    &__contents {
+      position: relative;
+      padding: 4%;
+      background: $white;
+      border-radius: 6px;
+      margin-bottom: 50px;
+
+      @include make-col(12);
+      @include make-col-offset(0);
+
+      @include media(">=desktop") {
+        @include make-col-offset(1);
+        @include make-col(7);
+      }
+    }
+
+    h6 {
+        color: $grey-dark;
+        font-size: 12px;
+        font-weight: $weight-bold;
+        letter-spacing: 0px;
+        margin-bottom: 7px;
+
+        &.#{$type}__type {
+          text-transform: uppercase;
+        }
+      }
+
+    &__meta {
+      display: flex;
+
+      h5 {
+        color: $grey-dark;
+        font-size: 15px;
+        font-weight: $weight-bold;
+        letter-spacing: -0.29px;
+
+        &.#{$type}__type {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &__sidebar-field {
+      margin-bottom: 2rem;
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      p {
+        margin-bottom: 0;
+        font-weight: $weight-light;
+      }
+
+      .Btn {
+        width: 100%;
+        text-transform: uppercase;
+      }
+    }
+
+    &__header {
+      margin-bottom: 2vw;
+    }
+
+    &__title {
+      font-family: $font-family-headline;
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      font-weight: $weight-bold;
+    }
+
+    &__caption {
+      color: $grey-mid;
+      font-size: 1rem;
+      line-height: 1.375;
+      font-weight: $weight-light;
+    }
+
+    &__terms {
+      display: flex;
+    }
+
+    &__content {
+      font-weight: $weight-light;
+
+      p, code, ul, ol {
+        line-height: 1.52;
+      }
+      p, ul {
+        font-size: 16px;
+        word-wrap: break-word;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .img {
+        &--full {
+          position: relative;
+          width: 100vw;
+          left: calc(-1 * (100vw - 100%) / 2);
+          margin-left: calc(-15px / 2);
+        }
+      }
+    }
+
+    &__sidebar {
+      padding: 0 2%;
+
+      @include make-col(12);
+      @include make-col-offset(0);
+
+      @include media(">=desktop") {
+        @include make-col(3);
+        @include make-col-offset(0);
+        margin-top: calc(#{$_img-overlap} + #{$module-offset / 2});
+      }
+
+      &-field-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        font-weight: $weight-bold;
+      }
+
+      h6 {
+        @extend .#{$type}__sidebar-field-label;
+        margin-bottom: 0.5rem;
+      }
+
+      
+      .Single--scrolled:not(.Tool) & {
+        @include media(">=desktop") {
+          position: fixed;
+          width: 300px;
+          top: 0;
+          // right: 0;
+          margin-top: 20px;
+        }
+      }
+    }
+
+    &__additional {
+      position: relative;
+      z-index: 1;
+      background: $_single-bg-color;
+      border-top: 1px solid $grey-light;
+
+      .Page--isStripped & {
+        display: none;
+      }
+    }
+
+    .Main {
+      margin-top: -3vw;;
+
+      @media (min-width: 600px) {
+        margin-top: -$_img-overlap;
+      }
+    }
+
+    .row {
+      @media (max-width: 400px) {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+
+    .featured-articles {
+      padding-top: 40px;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+// Content Single Overrides
+
+@import "./Article.scss";
+@import "./Person.scss";
