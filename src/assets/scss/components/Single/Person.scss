@@ -2,7 +2,7 @@
   position: relative;
 
   &__image {
-    background-image: url("//img2.storyblok.com/1200x500/smart/f/52232/1450x750/2464f072f6/blue.png");
+    background-image: url("http://a.storyblok.com/f/58905/2880x1440/c774cde842/learning_bluebg.png");
   }
 
   &__header {
@@ -14,6 +14,7 @@
       img {
         border-radius: 100%;
         border: 1px solid rgba(0, 0, 0, 0.125);
+        max-width: 100px;
       }
     }
 

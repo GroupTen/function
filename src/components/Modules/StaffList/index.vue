@@ -2,10 +2,10 @@
   <div :class="BEM_B">
     <CardList
       :mods="['4-up']"
-      :startsWith="'resources/people/' + blok.staffType"
+      :startsWith="this.$store.state.language !== 'en' ? this.$store.state.language + '/resources/team/' : 'resources/team/'"
       :sortOrder="blok.sortBy || 'position:desc'"
       :blok="blok ? blok : []"
-      :perPage="blok.staffType == 'staff' ? 100 : 25"
+      :perPage="25"
       :cardImageDims="['300', '300']" />
   </div>
 </template>
