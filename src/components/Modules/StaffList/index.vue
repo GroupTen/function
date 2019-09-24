@@ -2,7 +2,7 @@
   <div :class="BEM_B">
     <CardList
       :mods="['4-up']"
-      :startsWith="this.$store.state.language !== 'en' ? this.$store.state.language + '/resources/team/' : 'resources/team/'"
+      :startsWith="this.$store.state.language !== 'en' ? this.$store.state.language + '/team/' : 'team/'"
       :sortOrder="blok.sortBy || 'position:desc'"
       :blok="blok ? blok : []"
       :perPage="25"

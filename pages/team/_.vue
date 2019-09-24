@@ -66,7 +66,6 @@ export default {
       }
 
       let version = editMode ? 'draft' : 'published'
-      let path = context.route.path.indexOf('zh-cn') !== -1 ? context.route.path.replace('zh-cn', 'zh-cn/resources') : '/resources' + context.route.path
 
       // Load the JSON from the API
       return loadData({
@@ -74,7 +73,7 @@ export default {
         version: version,
         cacheVersion: context.store.state.cacheVersion,
         errorCallback: context.error,
-        path: path
+        path: context.route.path
       })
     }
   }
