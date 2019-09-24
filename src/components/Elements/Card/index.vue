@@ -4,9 +4,12 @@
        :class="!this.path ? BEM_E('link') + ' ' + BEM_E('link--no-path') : BEM_E('link')">
       <div :class="!this.image ? BEM_E('image') + ' no-image' : BEM_E('image')">
         <Vector v-if="this.svg" :name="this.svg" width="300" height="250" />
-        <img v-if="this.image"
+        <img v-if="this.image && this.image.imageLocation"
           :src="prepImg(this.image.imageLocation, imageDims ? imageDims[0] + 'x' + imageDims[1] + '/smart' : '600x300/smart')"
           :alt="this.image.imageAlt" />
+        <img
+          v-else-if="typeof this.image === 'string'"
+          :src="prepImg(this.image, imageDims ? imageDims[0] + 'x' + imageDims[1] + '/smart' : '600x300/smart')">
         <img v-if="!this.image && !this.svg" 
           :src="prepImg('//a.storyblok.com/f/52232/1920x1280/9c818873ed/placeholder.jpg', imageDims ? imageDims[0] + 'x' + imageDims[1] + '/smart' : '600x300/smart')" alt="Placeholder">
     </div>

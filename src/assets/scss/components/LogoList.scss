@@ -29,26 +29,22 @@ $lists: 'LogoList', 'MemberList';
     }
 
     &__item {
-      @include make-col(6);
-      @include flex(column, center, center);
-      align-self: stretch;
-      text-align: center;
-      margin-bottom: 20px;
+      @include flex(row, center, center);
+      &-link {
+        @include make-col(6);
+        @include flex(column, center, center);
+        align-self: stretch;
+        text-align: center;
+        margin-bottom: 20px;
+        background: none;
+
+        @include media(">=tablet") {
+          margin-bottom: 40px;
+        }
+      }
 
       &.ai a {
         border: none;
-      }
-
-      @include media(">=tablet") {
-        margin-bottom: 40px;
-      }
-
-      a {
-        @include flex(row, center, center);
-        min-height: 140px;
-        background: white;
-        border: 1px solid $grey-light;
-        border-radius: 2px;
       }
     }
 

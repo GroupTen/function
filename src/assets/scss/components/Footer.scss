@@ -158,18 +158,19 @@
     padding-left: 0;
   }
 
-  .TitleBlock {
-    padding: 0!important;
-  }
-
-  .TitleBlock__title {
-    padding-bottom: 1rem;
-    color: $white;
-    font-size: 20px;
-    font-weight: $weight-bold;
-    line-height: 1;
-    letter-spacing: 0;
-    text-transform: uppercase;
+  .TitleBlock:not(:empty) {
+    padding: 0;
+    .Btn {
+      padding: 0;
+      text-decoration: none;
+      padding-bottom: 1rem;
+      color: $white;
+      font-size: 20px;
+      font-weight: $weight-bold;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
   }
 
   p {
