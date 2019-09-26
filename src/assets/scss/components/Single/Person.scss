@@ -1,0 +1,57 @@
+.Person {
+  position: relative;
+
+  &__image {
+    background-image: url("http://a.storyblok.com/f/58905/2880x1440/c774cde842/learning_bluebg.png");
+  }
+
+  &__header {
+    display: flex;
+
+    &-image {
+      margin-right: 20px;
+
+      img {
+        border-radius: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        max-width: 100px;
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+
+  &__contents {
+    background: $white;
+  }
+
+  &__sidebar {
+    padding: 0 2%;
+  }
+
+  &__job {
+    font-size: 18px;
+  }
+
+  &__organization {
+    &, & > a {
+      color: $grey-mid;
+      font-size: 16px;
+    }
+  }
+
+  &__sidebar-org {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  /*
+  .Main {
+    margin-top: 0;
+  }
+  */
+}

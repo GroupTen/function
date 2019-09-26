@@ -4,9 +4,12 @@
        :class="!this.path ? BEM_E('link') + ' ' + BEM_E('link--no-path') : BEM_E('link')">
       <div :class="!this.image ? BEM_E('image') + ' no-image' : BEM_E('image')">
         <Vector v-if="this.svg" :name="this.svg" width="300" height="250" />
-        <img v-if="this.image"
+        <img v-if="this.image && this.image.imageLocation"
           :src="prepImg(this.image.imageLocation, imageDims ? imageDims[0] + 'x' + imageDims[1] + '/smart' : '600x300/smart')"
           :alt="this.image.imageAlt" />
+        <img
+          v-else-if="typeof this.image === 'string'"
+          :src="prepImg(this.image, imageDims ? imageDims[0] + 'x' + imageDims[1] + '/smart' : '600x300/smart')">
         <img v-if="!this.image && !this.svg" 
           :src="prepImg('//a.storyblok.com/f/52232/1920x1280/9c818873ed/placeholder.jpg', imageDims ? imageDims[0] + 'x' + imageDims[1] + '/smart' : '600x300/smart')" alt="Placeholder">
     </div>
@@ -138,23 +141,9 @@ export default {
     fancyPath () {
       if(this.path) {
         let path = this.path
-        let matchesDomain = this.checkResourceMatch(path)
 
         // if story + matchesDomain, route story
-        if (matchesDomain) {
-          path = path.replace('zh-cn/zh_cn/resources/', '/zh-cn/').replace('zh-cn/resources/', '/zh-cn/').replace('resources/', '/')
-          return path
-        } else if (!matchesDomain) {
-          let env = process.env.prodUrl
-
-          // if my prod url is resources, link to main,
-          // else link to resources
-          if(env.includes('resources.wellcertified')) {
-            path = process.env.mainUrl + '/' + path
-          } else {
-            path = process.env.resourcesUrl + '/' + path.replace('zh-cn/zh_cn/resources/', 'zh-cn/').replace('zh-cn/resources/', 'zh-cn/').replace('resources/', '')
-          }
-        }
+        path = path.replace('zh-cn/zh_cn/', '/zh-cn/')
 
         return path
       }

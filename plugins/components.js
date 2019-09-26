@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import BaseComponent from '~/src/components/Templates/BaseComponent'
 import Page from '~/src/components/Templates/Page'
+import Article from '~/src/components/Types/Article'
+import Person from '~/src/components/Types/Person'
 
 import Accordion from '~/src/components/Modules/Accordion'
 import ASpot from '~/src/components/Modules/ASpot'
@@ -38,6 +40,8 @@ import VideoEmbed from '~/src/components/Modules/VideoEmbed'
 import Takeover from '~/src/components/Modules/Takeover'
 
 Vue.component('blok-page', Page)
+Vue.component('blok-article', Article)
+Vue.component('blok-person', Person)
 
 Vue.component('blok-accordion', Accordion)
 Vue.component('blok-a-spot', ASpot)

@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navigation :blok="$store.state.settings.mainNav[0]"/>
-    <div :class="BEM_B" v-scroll="handleScroll">
+    <div :class="BEM_B">
       <div :class="BEM_E('back-link') + ' container'" v-if="back !== false">
-        <nuxt-link :to="'/resources/?type=' + this.name.toLowerCase() + 's'">← All {{this.name}}s</nuxt-link>
+        <nuxt-link :to="backLink ? backLink : '/' + this.name.toLowerCase() + 's'" v-html="backLabel ? backLabel : '← All ' + name + 's'" />
       </div>
       <div :class="BEM_E('image')">
         <slot name="image"></slot>
@@ -58,59 +58,22 @@ export default {
     back: {
       type: Boolean,
       default: true
-    }
+    },
+    backLink: String,
+    backLabel: String
   },
   head () {
     return {
-      title: this.blok && this.blok.metadata ? this.blok.metadata.title : this.blok.title ? this.blok.title : 'A WELL Resource',
-      titleTemplate: '%s | ' + this.name + 's | WELL v2',
+      title: this.blok && this.blok.metadata ? this.blok.metadata.title : this.blok.title ? this.blok.title : 'Function',
+      titleTemplate: '%s | Function',
       meta: [{ hid: 'description', name: 'description', 
-      content: this.blok && this.blok.metadata ? this.blok.metadata.description : '' }],
-      script: [
-        { src: '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ccc5566758aaca2', 
-          type: 'text/javascript', 
-          async: true, 
-          defer: true
-        }
-      ]
+      content: this.blok && this.blok.metadata ? this.blok.metadata.description : '' }]
     }
   },
   data () {
     return {
       sidebarTop: 0,
       sidebarRight: 0
-    }
-  },
-  mounted () {
-    this.getSidebarPos()
-  },
-  methods: {
-    getSidebarPos () {
-      let sidebarRef = this.$refs.resourceSidebar
-      let sidebarTop = sidebarRef.offsetTop + 60
-      let sidebarRight = sidebarRef.getBoundingClientRect()
-
-      this.sidebarTop = sidebarTop
-      this.sidebarRight = sidebarRight
-      return [sidebarTop, sidebarRight]
-    },
-    handleScroll (evt, el) {
-      let clsName = el.className
-      let scrollCls = ' Single--scrolled'
-      let includesScroll = clsName.includes(scrollCls)
-
-      // if scroll is greater than the top of sidebar and less than the bottom of the page
-      if (window.scrollY > this.sidebarTop && (window.innerHeight + window.scrollY) < document.body.offsetHeight) {
-        if (!includesScroll) {
-          el.setAttribute('class', clsName + scrollCls)
-          this.$refs.resourceSidebar.setAttribute('style', 'left:' + this.sidebarRight.left + 'px')
-        }
-      } else {
-        if (includesScroll) {
-          el.setAttribute('class', clsName.replace(scrollCls, ''))
-          this.$refs.resourceSidebar.setAttribute('style', 'left: 0')
-        }
-      }
     }
   }
 }

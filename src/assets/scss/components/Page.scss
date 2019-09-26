@@ -58,6 +58,20 @@
     }
   }
 
+  &.article {
+    &Archive .Navigation,
+    .Navigation {
+      position: relative;
+      background: $blueDark;
+      background: linear-gradient(to right, $blue, $coral);
+    }
+  }
+
+  &.person .Navigation {
+    position: relative;
+    background: $blueDark;
+  }
+
   & > div:only-child > div:last-child:not(.Cta):not(.Footer),
   & > div:last-child:not(:first-child):not(.Footer) {
     margin-bottom: $module-offset;

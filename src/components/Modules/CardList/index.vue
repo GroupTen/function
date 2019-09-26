@@ -13,6 +13,18 @@
           :class="BEM_E('item')"
           v-if="item.content.private !== true">
             <card
+              v-if="item.content.component === 'page'"
+              :image="item.content && item.content.ogImage ? item.content.ogImage : null"
+              :title="item.name ? item.name : null"
+              :caption="item.content && item.content.ogDescription ? item.content.ogDescription : null"
+              :contentType="item.content ? item.content.component : null"
+              :tags="item.tag_list && item.tag_list.length > 0 ? item.tag_list : item.content.credentials ? item.content.credentials : null"
+              :path="linkCard(item.full_slug)"
+              :imageDims="cardImageDims ? cardImageDims : blok.variation && blok.variation === 'profiles' ? ['300', '300'] : null"
+              :collapses="collapses"
+              :mods="cardMods ? blok && blok.hideCardMeta ? cardMods.push('hide-meta') : cardMods : blok && blok.hideCardMeta ? ['hide-meta'] : null " />
+            <card
+              v-else
               :image="item.content && item.content.image ? item.content.image[0] : null"
               :title="item.content && item.content.title ? item.content.title : null"
               :caption="item.content && item.content.caption ? item.content.caption : null"

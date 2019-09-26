@@ -1,0 +1,90 @@
+$_transform: 80px;
+
+.error-page {
+  margin-bottom: $module-offset;
+  @include media(">=desktop") {
+    width: 100vw;
+    height: 100vh;
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+}
+
+.error {
+  @include flex(column-reverse, flex-start, center);
+  flex-wrap: nowrap;
+  margin: 0 40px;
+
+  @include media(">=desktop") {
+    @include flex(row, flex-start, center);    
+    margin-left: $_transform / 2;
+  }
+
+  &__image {
+    position: relative;
+    z-index: -1;
+
+    @include media(">=desktop") {
+      transform: translateX(-$_transform);
+    }
+
+    img {
+      @include media("<=tablet") {
+        width: 120vw;        
+      }
+    }
+  }
+
+  h1 {
+    font-family: $font-family-sans-serif;
+    font-size: 80px;
+    font-weight: $weight-blackout;
+
+    @include media(">=desktop") {
+      font-size: 250px;
+    }
+  }
+
+  h2 {
+    line-height: 1;
+    letter-spacing: -0.9px;
+  }
+
+  p {
+    max-width: 360px;
+    color: $grey-mid;
+    letter-spacing: 0;
+    line-height: 23px;
+  }
+
+  .Btn {
+    display: inline-block;
+  }
+}
+
+.error--hub {
+  .error p {
+    max-width: none;
+
+    @include media(">=tablet") {
+      max-width: 350px;
+    }
+  }
+
+  .error__image {
+    padding-bottom: 40px;
+
+    @include media(">=tablet") {
+      max-width: 50%;
+      transform: translateX(40px);
+    }
+
+    @include media(">=desktop") {
+      padding-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
