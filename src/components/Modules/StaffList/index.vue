@@ -4,7 +4,7 @@
       :mods="['4-up']"
       :startsWith="this.$store.state.language !== 'en' ? this.$store.state.language + '/team/' : 'team/'"
       :sortOrder="blok.sortBy || 'position:desc'"
-      :blok="blok ? blok : []"
+      :blok="blok && staffBlok ? staffBlok : []"
       :perPage="25"
       :cardImageDims="['300', '300']" />
   </div>
@@ -23,6 +23,16 @@ export default {
       default: 'StaffCardList'
     },
     blok: Object
+  },
+  computed: {
+    staffBlok () {
+      if (this.blok) {
+        const staffBlock = this.blok
+        staffBlock.cards = []
+
+        return staffBlock
+      }
+    }
   }
 }
 </script>
