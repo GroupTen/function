@@ -7,7 +7,7 @@
         </div>
         <ul :class="BEM_E('list') + ' row'">
           <!-- Allows us to pass in cards from editor via blok.cards or programmatically with items -->
-          <li v-for="(item, index) in this.blok && blok.cards ? blokItems : items"
+          <li v-for="(item, index) in blok && blok.cards ? blokItems : items"
           v-bind:key="index"
           v-bind:title="item.msg"
           :class="BEM_E('item')"
