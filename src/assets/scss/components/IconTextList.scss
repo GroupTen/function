@@ -99,7 +99,7 @@ $lists: 'IconTextList', 'IconTextListCollapse';
 
       &--#{$i}-up-center {
         .#{$type}__content-link {
-          justify-content: center;
+          justify-content: left;
           margin-bottom: 20px;
 
           @include media(">=tablet") {
@@ -342,7 +342,7 @@ $lists: 'IconTextList', 'IconTextListCollapse';
       .#{$type}__content {
         @include media("<desktop") {
           padding-right: 0;
-          padding-left: 10px;
+          padding-left: 25px;
           text-align: left
         }
         @include media(">=desktop") {
