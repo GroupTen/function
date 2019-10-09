@@ -1,5 +1,5 @@
 <template>
-  <SingleComponent :name="this.name" v-bind:blok="blok" :slug="slug" backLabel="← Back to Team" backLink="/about/team">
+  <SingleComponent :name="this.name" v-bind:blok="blok" :slug="slug" backLabel="← Back to About" backLink="/about">
     <template slot="header">
       <div :class="BEM_E('header-image')" v-if="blok && blok.image[0]">
         <img :src="prepImg(blok.image? blok.image[0].imageLocation : null, '100x100/smart')">
