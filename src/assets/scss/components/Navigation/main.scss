@@ -361,7 +361,11 @@ $_nav-pad: 10px 0;
     font-family: $font-family-headline;
     text-transform: uppercase;
     font-weight: $weight-blackout;
+    font-size: 30px;
+
+    @include media(">=tablet") {
     font-size: 50px;
+    }
 
     &:before {
       margin-right: 10px;
@@ -416,7 +420,12 @@ $_nav-pad: 10px 0;
         }
 
         .Btn:before {
-          min-width: 70px;
+          min-width: 40px;
+
+          @include media(">=tablet") {
+            min-width: 70px;
+          }
+
           text-align: left;
           content: '0' + $index;
           @if $index == 1 {
