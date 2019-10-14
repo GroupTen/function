@@ -56,9 +56,6 @@
             :cardMods="listView ? ['bordered', 'list', 'full-width', contentType === 'faqs' ? 'no-image' : ''] : ['bordered', contentType === 'faqs' ? 'no-image' : '']"
             :mods="listView ? ['full'] : ['3-up']"
             :collapses="contentType === 'faqs' ? true : false" />
-          <div v-else style="flex:1">
-            <h2 :class="BEM_E('no-results')">No {{contentType}} found</h2>
-          </div>
           <div :class="this.totalPosts <= this.perPage ? BEM_E('pagination') + ' hide' : BEM_E('pagination')">
             <b-pagination
               size="sm"
