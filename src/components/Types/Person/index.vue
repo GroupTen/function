@@ -6,7 +6,7 @@
       </div>
       <div :class="BEM_E('header-content')">
         <h6 :class="BEM_E('type')">Community</h6>
-        <h1 :class="BEM_E('name')" v-if="blok.title">{{blok.title}}</h1>
+        <h2 :class="BEM_E('name')" v-if="blok.title" class="mb-0">{{blok.title}}</h2>
         <h3 :class="BEM_E('job')" v-if="blok.caption">{{blok.caption}}</h3>
       </div>
     </template>
