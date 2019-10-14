@@ -56,4 +56,18 @@
       line-height: 1.5;
     }
   }
+
+  &__social-links {
+    padding: 0;
+    list-style: none;
+    @include flex(row, flex-start, center);
+
+    li:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+
+  &__social-link {
+    color: $black;
+  }
 }

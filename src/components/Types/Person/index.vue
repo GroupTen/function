@@ -61,6 +61,16 @@
         <h6>Hobbies & Activities</h6>
         <div v-html="markdown(blok.interests)"></div>
       </div>
+      <div v-if="blok.socialLinks">
+        <h6>Connect</h6>
+        <ul :class="[BEM_E('sidebar-field'), BEM_E('social-links')]">
+          <li v-for="(link, index) in blok.socialLinks" v-bind:key="index">
+            <a :href="link.url" target="_blank" :class="BEM_E('social-link')">
+              <Vector :name="'social/' + link.name" />
+            </a>
+          </li>
+        </ul>
+      </div>
     </template>
   </SingleComponent>
 </template>
