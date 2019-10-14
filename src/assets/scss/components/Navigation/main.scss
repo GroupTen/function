@@ -173,12 +173,6 @@ $_nav-pad: 10px 0;
         display: block;
       }
     }
-
-    & > .container > .row {
-      @include media("<=tablet") {
-        flex-direction: column;
-      }
-    }
   }
 
   &--subnav {

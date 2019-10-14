@@ -13,25 +13,28 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 
 h1 {
   font-family: $font-family-headline;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-weight: $weight-bold;
-  line-height: 4rem;
+  line-height: 0.875;
   letter-spacing: 0.19px;
 
   @include media(">=desktop-sm") {
     font-size: 6rem;
-    line-height: 6rem;
+    line-height: 1;
   }
-
 }
 
 h2 {
   margin-bottom: 1.5rem;
   font-family: $font-family-headline;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: $weight-bold;
-  line-height: 3.375rem;
+  line-height: 1.125;
   letter-spacing: 0.5px;
+
+  @include media(">=desktop-sm") {
+    font-size: 3rem;
+  }
 }
 
 h3 {
@@ -100,6 +103,7 @@ $blends: multiply, color, screen, overlay, darken, lighten, color-dodge, color-b
 $listItemIconList: check, globe;
 
 $directions: top, right, bottom, left;
+$sizes: sm, md, lg, xl;
 
 @each $icon in $listItemIconList {
   .listicon-#{$icon} {
@@ -150,6 +154,30 @@ $directions: top, right, bottom, left;
     }
     .icon, .simple-svg-wrapper, svg {
       fill: $value!important;
+    }
+  }
+
+  @each $size in $sizes {
+    .color-#{$key}-#{$size} {
+      @if $size == 'sm' {
+        @include media("<tablet") {
+          &, h1, h2, h3, h4, h5, h6, p {
+            color: $value!important;
+          }
+        }
+      } @else if $size == 'md' {
+        @include media(">=tablet") {
+          color: $value!important;
+        }
+      } @else if $size == 'lg' {
+        @include media(">=desktop") {
+          color: $value!important;
+        }
+      } @else {
+        @include media(">=desktop-hd") {
+          color: $value!important;
+        }
+      }
     }
   }
 
