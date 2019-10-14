@@ -49,9 +49,11 @@
     }
   }
 
-  /*
-  .Main {
-    margin-top: 0;
+  &__interests {
+    ul {
+      list-style: initial;
+      margin-left: 20px;
+      line-height: 1.5;
+    }
   }
-  */
 }

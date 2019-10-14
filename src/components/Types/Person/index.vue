@@ -1,5 +1,5 @@
 <template>
-  <SingleComponent :name="this.name" v-bind:blok="blok" :slug="slug" backLabel="← Back to About" backLink="/about">
+  <SingleComponent :name="this.name" v-bind:blok="blok" :slug="slug" backLabel="← Back to Team" backLink="/about#team">
     <template slot="header">
       <div :class="BEM_E('header-image')" v-if="blok && blok.image[0]">
         <img :src="prepImg(blok.image? blok.image[0].imageLocation : null, '100x100/smart')">
@@ -9,6 +9,9 @@
         <h2 :class="BEM_E('name')" v-if="blok.title" class="mb-0">{{blok.title}}</h2>
         <h3 :class="BEM_E('job')" v-if="blok.caption">{{blok.caption}}</h3>
       </div>
+    </template>
+    <template slot="image" v-if="blok.cover && blok.cover[0]">
+      <img :src="prepImg(blok.cover[0].imageLocation, '1100x350/smart')">
     </template>
     <template slot="content">
       <div v-html="markdown(blok.bio)"></div>
@@ -50,13 +53,13 @@
           <TagList :tags="blok.credentials" :shouldLink="false" />
         </div>
       </div>
-      <div :class="BEM_E('sidebar-field')" v-if="blok.advisories && blok.advisories.length > 0">
-        <h6>Advisories</h6>
-        <ul :class="BEM_E('advisories')">
-          <li v-for="(advisories, index) in blok.advisories" v-bind:key="index">
-            <p><span :class="BEM_E('advisories')">{{advisories}}</span></p>
-          </li>
-        </ul>
+      <div :class="[BEM_E('sidebar-field'), BEM_E('favorite-tech')]" v-if="blok.favoriteTech">
+        <h6>Favorite Technology</h6>
+        <p v-html="blok.favoriteTech" />
+      </div>
+      <div :class="[BEM_E('sidebar-field'), BEM_E('interests')]" v-if="blok.interests">
+        <h6>Hobbies & Activities</h6>
+        <div v-html="markdown(blok.interests)"></div>
       </div>
     </template>
   </SingleComponent>
