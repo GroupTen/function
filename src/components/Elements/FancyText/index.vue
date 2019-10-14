@@ -1,12 +1,11 @@
 <template>
-  <span :class="BEM_B">
-    {{fancyTxt}}
-  </span>
+  <span :class="BEM_B" v-html="fancyTxt" />
 </template>
 
 <script>
 import BaseComponent from '~/src/components/Templates/BaseComponent'
 import BEM from '~/mixins/bem.js'
+const marked = require('marked')
 
 export default {
   extends: BaseComponent,
@@ -28,7 +27,7 @@ export default {
         // ensure we get blok as an {} instead of []
 
         let blok = this.blok[0] ? this.blok[0] : this.blok
-        return blok.customText !== '' && blok.customText !== null ? blok.customText : blok.existingText
+        return blok.customText !== '' && blok.customText !== null ? blok.customText : this.markdown(blok.existingText)
       }
       
       return ''
@@ -55,6 +54,13 @@ export default {
     },
     BEM_B () {
       return BEM.methods.BlockCls(this.name, this.computeMods, this.computeCls)
+    }
+  },
+  methods: {
+    markdown(txt) {
+      if(txt) {
+        return marked.inlineLexer(txt, [])
+      }
     }
   }
 }
