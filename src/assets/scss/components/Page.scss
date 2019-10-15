@@ -58,6 +58,39 @@
     }
   }
 
+  &.nav-dark {
+    .Navigation:not(.Navigation--subnav) {
+
+      .Navigation__logo-link {
+        & > img:first-child:not(:only-child) {
+          display: block;
+        }
+        & > img:last-child:not(:only-child) {
+          display: none;
+        }
+      }
+
+      .nav-trigger span {
+        background: $black;
+      }
+
+      &.mobile-open {
+        .Navigation__logo-link {
+          & > img:first-child:not(:only-child) {
+            display: none;
+          }
+          & > img:last-child:not(:only-child) {
+            display: block;
+          }
+        }
+
+        .nav-trigger span {
+          background: white;
+        }
+      }
+    }
+  }
+
   &.article {
     &Archive .Navigation,
     .Navigation {
