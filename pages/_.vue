@@ -65,9 +65,18 @@ export default {
         { name: 'og:description',
         content: this.story.content.ogDescription || 'Digitize your process' },
         { name: 'og:image',
-        content: this.story.content.ogImage || 'http://a.storyblok.com/f/58905/2658x1348/a7dfc7be83/social-thumbnail.png' }
+          content: this.story.content.ogImage || 'http://a.storyblok.com/f/58905/2658x1348/a7dfc7be83/social-thumbnail.png'
+        },
+        { name: 'google-site-verification',
+          content: 'vjP-rZM3zj8cHL0l8XgcSEGMuQRxdDP0A6wsKu2CPtE'
+        }
       ],
       script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=UA-55889031-1',
+          type: 'text/javascript',
+          async: true
+        },
         { 
           innerHTML: 'window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag(\'js\', new Date()); gtag(\'config\', \'UA-55889031-1\'); gtag(\'config\', \'AW-699780384\');', 
           type: 'text/javascript',
