@@ -71,6 +71,9 @@ export default {
           content: 'vjP-rZM3zj8cHL0l8XgcSEGMuQRxdDP0A6wsKu2CPtE'
         }
       ],
+      link: [
+        { rel: 'canonical', href: 'https://www.wellcertified.com/' + this.story.full_slug !== 'home' ? this.story.full_slug : '' }
+      ],
       script: [
         {
           src: 'https://www.googletagmanager.com/gtag/js?id=UA-55889031-1',
