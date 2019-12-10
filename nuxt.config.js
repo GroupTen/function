@@ -1,9 +1,9 @@
 const pkg = require('./package')
 const axios = require('axios')
-const blokToken = 'pQ1qRdl9S8X1bwzXDIAg1Qtt'
+const blokToken = '5QiTs5A7EqrvWlUMiCUX1gtt'
 
-const mainUrl = 'https://brave-clarke-662806.netlify.com/'
-const resourceUrl = 'https://brave-clarke-662806.netlify.com/'
+const mainUrl = 'https://condescending-varahamihira-b2140e.netlify.com/'
+const resourceUrl = 'https://condescending-varahamihira-b2140e.netlify.com/'
 const config = {
   mode: 'universal',
   /*
