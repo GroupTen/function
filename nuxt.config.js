@@ -103,7 +103,9 @@ const config = {
       let page = 1
       let routes = ['/']
 
-      console.log(process.env.INCOMING_HOOK_BODY, 'dat')
+      let thing = JSON.parse(process.env.INCOMING_HOOK_BODY)
+
+      console.log(thing ? thing.story_id, 'dat')
 
       // Load space and receive latest cache version key to improve performance
       axios.get(`https://api.storyblok.com/v1/cdn/spaces/me?token=${blokToken}`).then((space_res) => {
