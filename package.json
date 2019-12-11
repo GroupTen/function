@@ -9,7 +9,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "serverbuild": "nuxt build && nuxt start",
-    "generate": "nuxt generate",
+    "prebuild": "node static/js/buildCache.js",
+    "generate": "CI=1 nuxt generate --quiet",
+    "hotshot": "yarn prebuild && yarn generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "netlify-dev": "npm run generate && netlify dev --live"
@@ -17,6 +19,7 @@
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.0.3",
     "@nuxtjs/sitemap": "^0.2.0",
+    "cache-me-outside": "^0.0.10",
     "cross-env": "^5.2.0",
     "marked": "^0.6.2",
     "moment": "^2.24.0",

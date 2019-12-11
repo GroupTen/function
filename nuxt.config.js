@@ -108,7 +108,7 @@ const config = {
       if (thing) {
         let other = JSON.parse(thing)
         if (other) {
-          console.log(other.story_id, 'other')
+          console.log(other.story_id, 'story id')
         }
       }
 
