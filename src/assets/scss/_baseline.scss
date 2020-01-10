@@ -191,6 +191,10 @@ $sizes: sm, md, lg, xl;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+
+      .footer-#{$key}-#{$key2}-#{$dir} .Footer {
+        background: linear-gradient(to #{$dir}, $value, $value2);
+      }
     }
   }
 
@@ -247,6 +251,12 @@ $sizes: sm, md, lg, xl;
 
   .listicon-#{$key} ul li:before {
     background-color: $value;
+  }
+
+  .footer-#{$key} {
+    .Footer {
+      background: $value;
+    }
   }
 
   @each $per in $percents {
