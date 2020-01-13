@@ -1,6 +1,6 @@
 const pkg = require('./package')
 const axios = require('axios')
-const blokToken = 'pQ1qRdl9S8X1bwzXDIAg1Qtt'
+const blokToken = '1gOw9rAUCTWqu2VQF3sETAtt'
 
 const mainUrl = 'https://brave-clarke-662806.netlify.com/'
 const resourceUrl = 'https://brave-clarke-662806.netlify.com/'
